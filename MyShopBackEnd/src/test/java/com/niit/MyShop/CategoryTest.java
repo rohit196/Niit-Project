@@ -1,0 +1,37 @@
+package com.niit.MyShop;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.MyShop.dao.CategoryDAO;
+import com.niit.MyShop.dao.CategoryDAOImpl;
+import com.niit.MyShop.model.Category;
+
+public class CategoryTest {
+
+	public static void main(String[] args) {
+		
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.scan("com.niit.MyShop");
+		context.refresh();
+		
+		CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
+		Category category = (Category) context.getBean("category");
+		
+		category.setId(1000);
+		category.setType("HK002");
+		category.setDescription("This is 2nd item");
+		
+		category.setId(1001);
+		category.setType("HK003");
+		category.setDescription("This is 3rd item");
+		
+		
+		categoryDAO.saveOrUpdate(category);
+		//Category c = categoryDao.get(1000);
+		//System.out.println(c.getId());
+	}
+	
+	
+	
+
+}
