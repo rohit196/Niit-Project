@@ -4,14 +4,16 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-<title>Yahoo!!</title>
+<title>Login Form </title>
 </head>
 <body>
     <p><font color="red">${errorMessage}</font></p>
-    <form action="isValidUser" method="post">
+    <form:form action="isValidUser" method="post" modelAttribute="user">
         Name : <input name="name" type="text" /> 
+        <br />
         Password : <input name="password" type="password" /> 
+        <br />
        Submit : <input type="submit" />
-    </form>
+    </form:form>
 </body>
 </html>

@@ -2,22 +2,26 @@ package com.niit.MyShop.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.niit.MyShop.model.User;
+import com.niit.MyShop.model.UserDetails;
+
 
 @Repository("userDAO")
-public class UserDAOImpl {
+public class UserDAOImpl implements UserDAO{
+	
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 
-	public void UserDAOlmpl(SessionFactory sessionFactory) {
+	public UserDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
@@ -35,6 +39,12 @@ public class UserDAOImpl {
 	public void saveOrUpdate(User user) {
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
+	
+	@Transactional
+	public void saveOrUpdate(UserDetails userDetails) {
+		sessionFactory.getCurrentSession().saveOrUpdate(userDetails);
+	}
+	
 
 	@Transactional
 	public void delete(String id) {
@@ -46,9 +56,10 @@ public class UserDAOImpl {
 	@Transactional
 	public User get(String id) {
 		String hql = "from User where id=" + id;
+		@SuppressWarnings("deprecation")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked", "deprecation" })
 		List<User> list = (List<User>) query.list();
 		
 		if (list != null && !list.isEmpty()) {
@@ -59,11 +70,13 @@ public class UserDAOImpl {
 	}
 	
 	@Transactional
-	public boolean isValidUser(String id, String password, boolean isAdmin) {
-		String hql = "from User where id=" + id + " and " + " name =" + password;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	public boolean isValidUser(String username, String password, boolean isAdmin) {
+		String hql = "from User where username=" + username; 
+		@SuppressWarnings("deprecation")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);	
+		System.out.println(query);
 		
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked", "deprecation" })
 		List<User> list = (List<User>) query.list();
 		
 		if (list != null && !list.isEmpty()) {
@@ -74,6 +87,9 @@ public class UserDAOImpl {
 	}
 
 
-	
+	public void saveOrUpdate(UserDAO userDAO) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

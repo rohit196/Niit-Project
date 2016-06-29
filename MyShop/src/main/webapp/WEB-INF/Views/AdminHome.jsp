@@ -4,13 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin cha Ghar</title>
 </head>
 <body>
-<h3>Welcome Admin</h3>
+<h3>Welcome To Westeros</h3>
 
-<a href="getallCategories">Categories</a>
-<a href="getAllSuppliers">Suppliers</a>
-<a href="getAllCategories">Products</a>
+Categories<a href="/getallCategories"> Display</a><br>
+	<br> <!--  <a href ="Views/addCategory.jsp">ADD</a> -->
+Suppliers<a href="getAllSuppliers"> Display</a><br>
+<br>   <!-- <a href ="Views/addSupplier.jsp">ADD</a> -->
+Products<a href="getAllProducts"> Display</a><br>
+<br>  <!-- <a href = "Views/addProduct.jsp">ADD</a> -->
 </body>
 </html>

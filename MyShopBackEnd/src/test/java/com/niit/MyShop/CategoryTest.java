@@ -17,11 +17,11 @@ public class CategoryTest {
 		CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
 		Category category = (Category) context.getBean("category");
 		
-		category.setId(1000);
+		category.setId("1000");
 		category.setType("HK002");
 		category.setDescription("This is 2nd item");
 		
-		category.setId(1001);
+		category.setId("1001");
 		category.setType("HK003");
 		category.setDescription("This is 3rd item");
 		

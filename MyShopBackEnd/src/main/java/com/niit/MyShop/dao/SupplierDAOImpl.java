@@ -5,15 +5,16 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.MyShop.model.Category;
+import com.niit.MyShop.dao.SupplierDAO;
 import com.niit.MyShop.model.Supplier;
 
-@Repository
+@Repository("supplierDAO")
 public class SupplierDAOImpl implements SupplierDAO{
 
 		@Autowired
@@ -26,10 +27,8 @@ public class SupplierDAOImpl implements SupplierDAO{
 		@Transactional
 		public List<Supplier> list() {
 			@SuppressWarnings("Unchecked")
-			List<Supplier> list = (List<Supplier>) sessionFactory.getCurrentSession()
-			.createCriteria(Supplier.class)
-			.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-			return list();
+			List<Supplier> list = (List<Supplier>) sessionFactory.getCurrentSession().createCriteria(Supplier.class).list();
+			return list;
 		}
 		
 		@Transactional
@@ -39,16 +38,22 @@ public class SupplierDAOImpl implements SupplierDAO{
 		
 		
 		@Transactional
-		public void delete(String id){
+		public String delete(String id){
 			Supplier supplier = new Supplier();
 			supplier.setId(id);
-			sessionFactory.getCurrentSession().delete(supplier);
+			try{
+				sessionFactory.getCurrentSession().delete(supplier);
+			}catch(HibernateException e){
+				e.printStackTrace();
+				return e.getMessage();
+			}
+			return null;
 		}
 		
 		
 		@Transactional
 		public Supplier get(String id){
-			String hql = "from Category where id = " + id;
+			String hql = "from Supplier where id = " + "'" + id +"'";
 			Query query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			@SuppressWarnings("Unchecked")
@@ -58,8 +63,5 @@ public class SupplierDAOImpl implements SupplierDAO{
 			}
 			return null;
 		}
-		
-
-		
 		
 }

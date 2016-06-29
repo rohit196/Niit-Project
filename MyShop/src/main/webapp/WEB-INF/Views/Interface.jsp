@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Watch Shop</title>
-</head>
+
 
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
@@ -16,16 +16,17 @@
   .Watch-inner > .item > img,
   .Watch-inner > .item > a > img {
       
-      width: 70%;
+      width: 85%;
       margin: auto;
   }
   
   .carousel-inner > .item > img{
-  	height: 80%;
-  	width: 80%;
+  	height: 85%;
+  	width: 85%;
   	border: 1px solid;
   }
   </style>
+  </head>
 <body>
 <nav class="navbar nav-default">
 <div class="container-fluid">
@@ -63,18 +64,18 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" style="width:80%;">
       <div class="item active">
-        <img src="Images/1.jpg" alt="Mens Watch">
+        <img src="Resources/Images/20.jpg" alt="Mens Watch">
       </div>
      <!-- <div class="item">
-        <img src="2.jpg" alt="Mens Watch" width="800" height="345">
+        <img src="Resources/Images/30.jpg" alt="Mens Watch">
       </div>
     
       <div class="item">
-        <img src="3.jpg" alt="Women's Watch" width="460" height="345">
+        <img src="Resources/Images/40.jpg" alt="Women's Watch" width="460" height="345">
       </div> -->
 
       <div class="item">
-        <img src="Images/4.jpg" alt="Watch">
+        <img src="Resources/Images/50.jpg" alt="Watch">
       </div>
     </div>
 

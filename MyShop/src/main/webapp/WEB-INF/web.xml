@@ -25,8 +25,7 @@ xmlns="http://java.sun.com/xml/ns/j2ee"
    </context-param>
    
    <listener>
-   <listener-class>org.springframework.web.context.ContextLoaderListener
-   </listener-class>
+   <listener-class>org.springframework.web.context.ContextLoaderListener </listener-class>
    </listener>
    
    

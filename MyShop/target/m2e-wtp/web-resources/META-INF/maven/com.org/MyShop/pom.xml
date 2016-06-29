@@ -7,6 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>MyShop Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,6 +15,7 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
     <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-core</artifactId>
@@ -30,10 +32,23 @@
     <artifactId>spring-web</artifactId>
     <version>4.3.0.RELEASE</version>
 </dependency>
+
+<dependency>
+<groupId>com.niit.Project</groupId>
+  <artifactId>MyShopBackEnd</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency> 
+
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
     <version>4.3.0.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
 </dependency>
 
 <dependency>

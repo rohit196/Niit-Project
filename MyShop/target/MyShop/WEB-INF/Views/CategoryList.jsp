@@ -19,23 +19,20 @@
 <table width="50%">
 <div class="table-responsive">
 <table class="table table-striped">  
-<thead>
 <tr>
 	<th>S.no</th>
 	<th>Id</th>
 	<th>Name</th>
 	<th>Description</th>
 </tr>
-</thead>
-</table>
 <c:forEach items="${categoryList}" var="category" varStatus="status">
 
-
+<tr>
 <td align="center">${status.count}</td>
-<tbody>
 <td><input name="categoryList{${status.index}}.id" readonly="readonly" value="${category.id}"/></td>
 <td><input name="categoryList{${status.index}}.name" value="${category.name}"/></td>
 <td><input name="categoryList{${status.index}}.address" value="${category.description}"/></td>
+</tr>
 
 </c:forEach>
 </table>
