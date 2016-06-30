@@ -18,14 +18,14 @@
 <h3> ADD CATEGORY</h3>
 <c:url var="addAction" value="/category/add"></c:url>
 
-<form:form action="${addAction}" commandName= "categoryList">
+<form:form action="${addAction}" commandName= "category">
 <table>
 <tr>
 <td><form:label path="id">
 <spring:message text="id" />
 </form:label></td>
 <c:choose>
-<c:when test="${!empty categoryList.id}">
+<c:when test="${!empty category.id}">
 <td><form:input path="id" disabled="true" readonly="true" /></td>
 </c:when>
 <c:otherwise>
@@ -51,14 +51,15 @@
 <td><form:input path="description" required="true"/></td>
 </tr>
 <tr>
-<td colspan="2"><c:if test="${!empty category.name}">
+<td colspan="2"><c:if test="${!empty category.type}">
 <input type="submit" value ="<spring:message text="Edit CategoryList" />" />
 </c:if>
-<c:if test="${empty categoryList.name }">
+<c:if test="${empty category.type }">
 <input type="submit" value="<spring:message text="Add CategoryList" /> "/>
 </c:if></td>
 </tr>
-</table>
+
+ </table>
 </form:form>
 <br>
 
@@ -74,11 +75,11 @@
 </tr>
 <c:forEach items="${categoryList}" var="category">
 <tr>
-<td>${categoryList.id}</td>
-<td>${categoryList.Type}</td>
-<td>${categoryList.Description}</td>
-<td><a href="<c:url value='category/edit/${categoryList.id}' />">EDIT</a></td>
-<td><a href="<c:url value='category/remove/${categoryList.id}' />">DELETE</a></td>
+<td>${category.id}</td>
+<td>${category.type}</td>
+<td>${category.description}</td>
+<td><a href="<c:url value='category/edit/${category.id}' />">EDIT</a></td>
+<td><a href="<c:url value='category/remove/${category.id}' />">DELETE</a></td>
 </tr>
 </c:forEach>
 </c:if>

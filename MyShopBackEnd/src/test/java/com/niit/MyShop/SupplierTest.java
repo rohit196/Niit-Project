@@ -3,11 +3,11 @@ package com.niit.MyShop;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.query.Query;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.MyShop.dao.SupplierDAO;
 import com.niit.MyShop.model.Supplier;
-
 
 
 public class SupplierTest {
@@ -37,7 +37,7 @@ public static void main(String[] args) {
 		//Category c = categoryDao.get(1000);
 		//System.out.println(c.getId());
 		
-		List<Supplier> sList = supplierDAO.list();
+	/*	List<Supplier> sList = supplierDAO.list();
 		Iterator i = (Iterator) sList.iterator();
 		while(i.hasNext()){
 			Supplier s = (Supplier) i.next();
@@ -46,7 +46,12 @@ public static void main(String[] args) {
 		
 		
 		System.out.println("in supplier");
-	}
-
+	}*/
+	 
+		 System.out.println(supplierDAO.get("10").getName());
+}
 
 }
+
+
+

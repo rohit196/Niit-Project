@@ -14,12 +14,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.MyShop.model.Category;
+//import com.niit.MyShop.model.Supplier;
 @Service
 @Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO {
 	
 	
-	@Autowired(required=true)
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	public CategoryDAOImpl(SessionFactory sessionFactory) {
@@ -27,11 +28,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 	
 	@Transactional
-	public List<Category> categorylist(){
+	public List<Category> list(){
 		@SuppressWarnings("unchecked")
-		List<Category> listCategory = (List<Category>)
-			sessionFactory.getCurrentSession().createCriteria(Category.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-		return listCategory;
+		List<Category> list = (List<Category>)sessionFactory.getCurrentSession().
+		createCriteria(Category.class).list();
+		//setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+		return list;
 	}
 	/*public  ArrayList<Category> getAllCategories(){
 		  ArrayList<Category> categoryList;
@@ -72,35 +74,32 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 		return null;
 	}
-	
+	//Query<Supplier> query = sessionFactory.getCurrentSession().createQuery(hql);
 	@Transactional
 	public Category get(String id) {
-		String hql = "from Category where id=" + id;
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		String hql = "from Category where id=" +"'" + id + "'";
+		Query<Category> query = sessionFactory.getCurrentSession().createQuery(hql);
+		/*Query query = sessionFactory.getCurrentSession().createQuery(hql);*/
 		
-		@SuppressWarnings("unchecked")
-		List<Category> listCategory = (List<Category>) query.list();
+		@SuppressWarnings({"deprication"})
+		List<Category> list = (List<Category>) query.list();
 		
-		if (listCategory != null && !listCategory.isEmpty()) {
-			return listCategory.get(0);
+		if (list != null && !list.isEmpty()) {
+			return list.get(0);
 		}
 		
 		return null;
 	}
 
-	@Override
-	public ArrayList<Category> getAllCategories() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+}	
 
-	@Override
+	/*@Override
 	public List<Category> list() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+*/
 	
 
 
-}
+

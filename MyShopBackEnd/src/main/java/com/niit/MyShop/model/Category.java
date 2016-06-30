@@ -17,6 +17,12 @@ public class Category {
 	private String id;
 	@Column(name = "TYPE")
 	private String type;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	@Column(name = "DESCRIPTION")
 	private String description;
 	
@@ -27,26 +33,25 @@ public class Category {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
+	/*public String getName() {
 		return type;
 	}
+	
 	public void setName(String name) {
 		this.type = name;
 	}
-	public String getDescription() {
+*/	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public void setType(String string) {
-		// TODO Auto-generated method stub
 		
-	}
+	/*}
 	public Category get(int i) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 	
 	
 	

@@ -2,7 +2,7 @@ package com.niit.MyShop.dao;
 
 import java.util.List;
 
-import javax.persistence.Query;
+import org.hibernate.query.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -54,10 +54,10 @@ public class SupplierDAOImpl implements SupplierDAO{
 		@Transactional
 		public Supplier get(String id){
 			String hql = "from Supplier where id = " + "'" + id +"'";
-			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			Query<Supplier> query = sessionFactory.getCurrentSession().createQuery(hql);
 			
-			@SuppressWarnings("Unchecked")
-			List<Supplier> list = (List<Supplier>) ((Criteria) query).list();
+			@SuppressWarnings({ "deprecation" })
+			List<Supplier> list = (List<Supplier>) query.list();
 			if(list !=null && !list.isEmpty()){
 				return list.get(0);
 			}

@@ -1,7 +1,9 @@
 package com.niit.MyShop;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import java.util.List;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import java.util.Iterator;
 import com.niit.MyShop.dao.CategoryDAO;
 import com.niit.MyShop.dao.CategoryDAOImpl;
 import com.niit.MyShop.model.Category;
@@ -29,9 +31,20 @@ public class CategoryTest {
 		categoryDAO.saveOrUpdate(category);
 		//Category c = categoryDao.get(1000);
 		//System.out.println(c.getId());
+	
+	
+	List<Category> sList  = categoryDAO.list();
+	Iterator i = (Iterator) sList.iterator();
+	while(i.hasNext()){
+		Category s = (Category) i.next();
+		System.out.println(s.getDescription());
 	}
 	
+	
+	System.out.println("in supplier");
 	
 	
 
 }
+}
+

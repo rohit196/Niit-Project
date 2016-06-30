@@ -77,8 +77,8 @@
 <td>${supplier.id}</td>
 <td>${supplier.name}</td>
 <td>${supplier.address}</td>
-<td><a href="<c:url value='supplier/edit/${supplier.id}' />">EDIT</a></td>
-<td><a href="<c:url value='supplier/remove/${supplier.id}' />">DELETE</a></td>
+<td><a href="<c:url value='/supplier/edit/${supplier.id}' />">EDIT</a></td>
+<td><a href="<c:url value='/supplier/remove/${supplier.id}' />">DELETE</a></td>
 </tr>
 </c:forEach>
 </c:if>

@@ -9,7 +9,7 @@
 <body>
 <h3>Welcome To Westeros</h3>
 
-Categories<a href="/getallCategories"> Display</a><br>
+Categories<a href="getAllCategories"> Display</a><br>
 	<br> <!--  <a href ="Views/addCategory.jsp">ADD</a> -->
 Suppliers<a href="getAllSuppliers"> Display</a><br>
 <br>   <!-- <a href ="Views/addSupplier.jsp">ADD</a> -->

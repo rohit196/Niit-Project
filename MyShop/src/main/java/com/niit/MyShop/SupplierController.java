@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.MyShop.dao.SupplierDAO;
-//import com.niit.MyShop.dao.SupplierDAOImpl;
+import com.niit.MyShop.dao.SupplierDAOImpl;
 import com.niit.MyShop.model.Supplier;;
 @Controller
 public class SupplierController {
@@ -52,34 +52,41 @@ public class SupplierController {
 		  return new ModelAndView("/AdminHome");
 		 }*/
 
-	 	public String addSupplier(@ModelAttribute("supplier") Supplier supplier){
-	 		
+	 	public String addSupplier(@ModelAttribute("supplier") Supplier supplier ,Model model){
+	 		model.addAttribute("supplier" , new Supplier());
+	 		model.addAttribute("supplierList", this.supplierDAO.list());
 	 		supplierDAO.saveOrUpdate(supplier);
-	 		return "redirect:/Supplier";
+	 		return "Supplier";
 	 	}
 	 	
 	 	@RequestMapping("supplier/remove/{id}")
-	 	public ModelAndView deleteSupplier(@ModelAttribute String supplier){
+	 	/*public ModelAndView deleteSupplier(@ModelAttribute String supplier){
 	 		supplierDAO.delete(supplier);
-	 		return new ModelAndView ("redirect:/suppliers");
-	 	}
-	 	public String removeSupplier(@PathVariable("id")String id,ModelMap model) throws Exception{
+	 		return new ModelAndView ("Supplier");
+	 	}*/
+	 	public String removeSupplier(@PathVariable("id")String id,ModelMap model ,Supplier supplier) throws Exception{
 	 		try{
 	 			supplierDAO.delete(id);
-	 			model.addAttribute("message","Successfully Added");
+	 			model.addAttribute("message","Successfully Delete");
 	 		}catch(Exception e){
 	 			model.addAttribute("message",e.getMessage());
 	 			e.printStackTrace();
 	 		}
-	 		return "redirect:/supplier";
-	 	}
-	 	@RequestMapping("supplier/edit/{id}")
-	 	
-	 	public String editSupplier(@PathVariable("id") String id, Model model){
-	 		System.out.println("editsupplier");
+	 		model.addAttribute("supplier" ,new Supplier());
 	 		model.addAttribute("supplier", this.supplierDAO.get(id));
-	 		model.addAttribute("listSuppliers", this.supplierDAO.list());
-	 		return "supplier";
+	 		model.addAttribute("supplierList", this.supplierDAO.list());
+	 		return "Supplier";
+	 	}
+	 	
+	 	
+	 	@RequestMapping(value="supplier/edit/{id}" )
+//{id}	 	
+	 	public String editSupplier(@PathVariable("id") String id, Supplier supplier , Model model){
+	 		System.out.println("editsupplier");
+	 		model.addAttribute("supplier" ,new Supplier());
+	 		model.addAttribute("supplier", this.supplierDAO.get(id));
+	 		model.addAttribute("supplierList", this.supplierDAO.list());
+	 		return "Supplier";
 	 	}	 	
 }
 

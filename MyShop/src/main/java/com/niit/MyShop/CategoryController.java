@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.MyShop.dao.CategoryDAO;
-import com.niit.MyShop.dao.SupplierDAO;
+//import com.niit.MyShop.dao.SupplierDAO;
 import com.niit.MyShop.model.Category;
-import com.niit.MyShop.model.Supplier;;
+//import com.niit.MyShop.model.Supplier;;
 
 @Controller
 public class CategoryController {
@@ -66,36 +66,42 @@ public class CategoryController {
 		 List sList = this.categoryDAO.list();
 		 model.addAttribute("categoryList",sList);
 		 //System.out.println("in controller" +sList);
-		 return "CategoryList";
+		 return "Category";
 	 }
 	@RequestMapping(value="/category/add", method = RequestMethod.POST)
-	public String addSupplier(@ModelAttribute("category") Category category){
+	public String addCategory(@ModelAttribute("category") Category category, Model model){
+ 		model.addAttribute("category" , new Category());
+ 		model.addAttribute("categoryList" , this.categoryDAO.list());
  		
  		categoryDAO.saveOrUpdate(category);
- 		return "redirect:/CategoryList";
+ 		return "Category";
  	}
 	@RequestMapping("category/remove/{id}")
- 	public ModelAndView deleteCategory(@ModelAttribute int category){
+ 	/*public ModelAndView deleteCategory(@ModelAttribute String category){
  		categoryDAO.delete(category);
- 		return new ModelAndView ("redirect:/CategoryList");
- 	}
- 	public String removeCategory(@PathVariable("id")int id,ModelMap model) throws Exception{
+ 		return new ModelAndView ("Category");
+ 	}*/
+ 	public String removeCategory(@PathVariable("id")String id,ModelMap model , Category category) throws Exception{
  		try{
  			categoryDAO.delete(id);
- 			model.addAttribute("message","Successfully Added");
+ 			model.addAttribute("message","Successfully Delete");
  		}catch(Exception e){
  			model.addAttribute("message",e.getMessage());
  			e.printStackTrace();
  		}
- 		return "redirect:/CategoryList";
- 	}
- 	@RequestMapping("category/edit/{id}")
- 	
- 	public String editCategory(@PathVariable("id") int id, Model model){
- 		System.out.println("editcategory");
+ 		model.addAttribute("category" , new Category());
  		model.addAttribute("category", this.categoryDAO.get(id));
- 		model.addAttribute("listCategories", this.categoryDAO.list());
- 		return "CategoryList";
+ 		model.addAttribute("categoryList" , this.categoryDAO.list());
+ 		return "Category";
+ 	}
+ 	@RequestMapping(value = "category/edit/{id}")
+ 	
+ 	public String editCategory(@PathVariable("id") String id, Model model, Category category){
+ 		System.out.println("editcategory");
+ 		model.addAttribute("category" , new Category());
+ 		model.addAttribute("category", this.categoryDAO.get(id));
+ 		model.addAttribute("categoryList", this.categoryDAO.list());
+ 		return "Category";
  	}	 	
 
 }
