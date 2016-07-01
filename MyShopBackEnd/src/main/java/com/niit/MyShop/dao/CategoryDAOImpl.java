@@ -91,6 +91,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return null;
 	}
 
+	@Override
+	public Category getByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }	
 
 	/*@Override

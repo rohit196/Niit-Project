@@ -28,9 +28,10 @@ public static void main(String[] args) {
 		supplier.setId("1002");
 		supplier.setName("helosssss");
 		supplier.setAddress("Mumbai");
-	
+		supplierDAO.saveOrUpdate(supplier);
+		
 		supplier.setId("1003");
-		supplier.setName("heloerewr");
+		supplier.setName("hollaa");
 		supplier.setAddress("Mumbai");
 				
 		supplierDAO.saveOrUpdate(supplier);
@@ -48,7 +49,7 @@ public static void main(String[] args) {
 		System.out.println("in supplier");
 	}*/
 	 
-		 System.out.println(supplierDAO.get("10").getName());
+		 System.out.println(supplierDAO.get("101").getName());
 }
 
 }

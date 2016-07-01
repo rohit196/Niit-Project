@@ -12,47 +12,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class Category {
 	
-	@Id
-	@Column(name = "ID")
+	@Id 
 	private String id;
-	@Column(name = "TYPE")
 	private String type;
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	@Column(name = "DESCRIPTION")
 	private String description;
 	
-	@Column(name = "ID")
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	/*public String getName() {
+	public String getType() {
 		return type;
 	}
-	
-	public void setName(String name) {
-		this.type = name;
+	public void setType(String type) {
+		this.type = type;
 	}
-*/	public String getDescription() {
+	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-		
-	/*}
-	public Category get(int i) {
+	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
-	}*/
+	}
 	
-	
-	
+			
 }

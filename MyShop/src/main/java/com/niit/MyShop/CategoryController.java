@@ -77,10 +77,10 @@ public class CategoryController {
  		return "Category";
  	}
 	@RequestMapping("category/remove/{id}")
- 	/*public ModelAndView deleteCategory(@ModelAttribute String category){
+ 	public ModelAndView deleteCategory(@ModelAttribute String category){
  		categoryDAO.delete(category);
  		return new ModelAndView ("Category");
- 	}*/
+ 	}
  	public String removeCategory(@PathVariable("id")String id,ModelMap model , Category category) throws Exception{
  		try{
  			categoryDAO.delete(id);

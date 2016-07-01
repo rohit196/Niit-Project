@@ -22,12 +22,18 @@ public class CategoryTest {
 		category.setId("1000");
 		category.setType("HK002");
 		category.setDescription("This is 2nd item");
+		System.out.println("first object before saving");
+		categoryDAO.saveOrUpdate(category);
+		System.out.println("first object after saving");
 		
 		category.setId("1001");
 		category.setType("HK003");
 		category.setDescription("This is 3rd item");
+		categoryDAO.saveOrUpdate(category);
 		
-		
+		category.setId("1110");
+		category.setType("HK007");
+		category.setDescription("This is 7th item");
 		categoryDAO.saveOrUpdate(category);
 		//Category c = categoryDao.get(1000);
 		//System.out.println(c.getId());

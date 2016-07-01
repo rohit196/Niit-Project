@@ -1,4 +1,5 @@
 com\niit\MyShop\SupplierController.class
 com\niit\MyShop\InterfaceController.class
+com\niit\MyShop\ProductController.class
 com\niit\MyShop\CategoryController.class
 com\niit\MyShop\LoginController.class
