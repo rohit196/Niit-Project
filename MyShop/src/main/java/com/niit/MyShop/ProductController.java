@@ -2,6 +2,7 @@ package com.niit.MyShop;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.MyShop.dao.CategoryDAO;
+import com.niit.MyShop.dao.ProductDAO;
 import com.niit.MyShop.dao.SupplierDAO;
 import com.niit.MyShop.model.Category;
-import com.niit.MyShop.model.Supplier;
-import com.niit.MyShop.dao.ProductDAO;
 import com.niit.MyShop.model.Product;
+import com.niit.MyShop.model.Supplier;
+
 @Controller
 public class ProductController {
-	
+
 	@Autowired(required=true)
 	private ProductDAO productDAO;
 
@@ -29,8 +31,14 @@ public class ProductController {
 	@Autowired(required = true)
 	private SupplierDAO supplierDAO;
 
+	/*
+	 * @Autowired(required=true)
+	 * 
+	 * @Qualifier(value="productDAO") public void setProductDAO(ProductDAO ps){
+	 * this.productDAO = ps; }
+	 */
 
-	@RequestMapping(value = "/product", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
 	public String listProducts(Model model) {
 		model.addAttribute("product", new Product());
 		model.addAttribute("category", new Category());
@@ -42,49 +50,56 @@ public class ProductController {
 	}
 
 	// For add and update product both
-	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
+	@RequestMapping(value = "product/add", method = RequestMethod.POST)
 	public String addProduct(@ModelAttribute("product") Product product) {
 
-		Category category = categoryDAO.getByName(product.getSupplier().getName());
-		categoryDAO.saveOrUpdate(category);  
+		Category category = categoryDAO.getByName(product.getCategory_fk().getType());
+		categoryDAO.saveOrUpdate(category);  // why to save??
 
-		Supplier supplier = ( supplierDAO).get(product.getSupplier().getName());
-		supplierDAO.saveOrUpdate(supplier); 
+		Supplier supplier = supplierDAO.getByName(product.getSupplier_fk().getName());
+		supplierDAO.saveOrUpdate(supplier); // Why to save??
 		
 		
 		
-		//((Object) product).setCategory(category);
-		product.setSupplier(supplier);
+		product.setCategory_fk(category);
+		product.setSupplier_fk(supplier);
 		
+		/*product.setCt_id(category.getCt_id());
+		product.setSup_id(supplier.getSup_id());*/
 		productDAO.saveOrUpdate(product);
 
-		return "Product";
+		return "redirect:/getAllProducts";
 
 	}
 
-	@RequestMapping("product/remove/{id}")
+	@RequestMapping("/product/remove/{id}")
 	public String removeProduct(@PathVariable("id") String id, ModelMap model) throws Exception {
 
 		try {
+			System.out.println("in product controller delete");
 			productDAO.delete(id);
-			model.addAttribute("message", "Successfully Deleted");
+			model.addAttribute("message", "Successfully Added");
+			model.addAttribute("product", this.productDAO.get(id));
+			model.addAttribute("productList", this.productDAO.list());
+			
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
 			e.printStackTrace();
 		}
 		
-		return "Product";
+		// redirectAttrs.addFlashAttribute(arg0, arg1)
+		return "redirect:/getAllProducts";
 	}
 
-	@RequestMapping("product/edit/{id}")
+	@RequestMapping(value ="/product/edit/{id}")
 	public String editProduct(@PathVariable("id") String id, Model model) {
 		System.out.println("editProduct");
 		model.addAttribute("product", this.productDAO.get(id));
-		model.addAttribute("listProducts", this.productDAO.list());
+		model.addAttribute("productList", this.productDAO.list());
 		model.addAttribute("categoryList", this.categoryDAO.list());
 		model.addAttribute("supplierList", this.supplierDAO.list());
 	
 		return "Product";
 	}
-	
-	}
+}
+

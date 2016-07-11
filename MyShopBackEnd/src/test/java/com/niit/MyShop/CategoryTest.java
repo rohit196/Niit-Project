@@ -19,25 +19,41 @@ public class CategoryTest {
 		CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
 		Category category = (Category) context.getBean("category");
 		
-		category.setId("1000");
+		/*System.out.println(categoryDAO.get("100").getDescription());
+		
+		Category c = categoryDAO.get("100");
+		
+		c.setDescription("women watch");
+		
+		categoryDAO.saveOrUpdate(c);
+		*/
+		
+		
+		category.setCat_id("1000");
 		category.setType("HK002");
 		category.setDescription("This is 2nd item");
 		System.out.println("first object before saving");
 		categoryDAO.saveOrUpdate(category);
 		System.out.println("first object after saving");
 		
-		category.setId("1001");
+		category.setCat_id("1001");
 		category.setType("HK003");
 		category.setDescription("This is 3rd item");
 		categoryDAO.saveOrUpdate(category);
 		
-		category.setId("1110");
+		category.setCat_id("1110");
 		category.setType("HK007");
 		category.setDescription("This is 7th item");
 		categoryDAO.saveOrUpdate(category);
+		
+		
+		category.setCat_id("1210");
+		category.setType("HK008");
+		category.setDescription("This is 8th item");
+		categoryDAO.saveOrUpdate(category);
 		//Category c = categoryDao.get(1000);
 		//System.out.println(c.getId());
-	
+	categoryDAO.delete("1210");
 	
 	List<Category> sList  = categoryDAO.list();
 	Iterator i = (Iterator) sList.iterator();
@@ -45,12 +61,6 @@ public class CategoryTest {
 		Category s = (Category) i.next();
 		System.out.println(s.getDescription());
 	}
-	
-	
-	System.out.println("in supplier");
-	
-	
-
 }
 }
 

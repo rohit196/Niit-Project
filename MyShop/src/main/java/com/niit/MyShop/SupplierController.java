@@ -3,6 +3,7 @@ package com.niit.MyShop;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.MyShop.dao.SupplierDAO;
-import com.niit.MyShop.dao.SupplierDAOImpl;
-import com.niit.MyShop.model.Supplier;;
+//import com.niit.MyShop.dao.SupplierDAOImpl;
+import com.niit.MyShop.model.Supplier;
+
 @Controller
 public class SupplierController {
 	@Autowired 
@@ -60,12 +62,12 @@ public class SupplierController {
 	 		return "Supplier";
 	 	}
 	 	
-	 	@RequestMapping("supplier/remove/{id}")
+	 	@RequestMapping("supplier/remove/{sid}")
 	 	/*public ModelAndView deleteSupplier(@ModelAttribute String supplier){
 	 		supplierDAO.delete(supplier);
 	 		return new ModelAndView ("Supplier");
 	 	}*/
-	 	public String removeSupplier(@PathVariable("id")String id,ModelMap model ,Supplier supplier) throws Exception{
+	 	public String removeSupplier(@PathVariable("sid")String id,ModelMap model ,Supplier supplier) throws Exception{
 	 		try{
 	 			supplierDAO.delete(id);
 	 			model.addAttribute("message","Successfully Delete");
@@ -80,9 +82,9 @@ public class SupplierController {
 	 	}
 	 	
 	 	
-	 	@RequestMapping(value="supplier/edit/{id}" )
+	 	@RequestMapping(value="supplier/edit/{sid}" )
 //{id}	 	
-	 	public String editSupplier(@PathVariable("id") String id, Supplier supplier , Model model){
+	 	public String editSupplier(@PathVariable("sid") String id, Supplier supplier , Model model){
 	 		System.out.println("editsupplier");
 	 		model.addAttribute("supplier" ,new Supplier());
 	 		model.addAttribute("supplier", this.supplierDAO.get(id));

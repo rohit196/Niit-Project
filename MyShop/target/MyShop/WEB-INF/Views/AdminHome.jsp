@@ -5,15 +5,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin cha Ghar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+    <style>
+  img{
+	  margin:auto;
+  }
+  h2.serif {
+    font-family: "Times New Roman", Times, serif;
+}
+  h2{
+   text-align: center;
+   }
+  
+  </style>
+  
 </head>
-<body>
-<h3>Welcome To Westeros</h3>
+<body style="background-color:light-blue;">
 
-Categories<a href="getAllCategories"> Display</a><br>
-	<br> <!--  <a href ="Views/addCategory.jsp">ADD</a> -->
-Suppliers<a href="getAllSuppliers"> Display</a><br>
-<br>   <!-- <a href ="Views/addSupplier.jsp">ADD</a> -->
-Products<a href="getAllProducts"> Display</a><br>
-<br>  <!-- <a href = "Views/addProduct.jsp">ADD</a> -->
+<center><h3>Welcome To Watch Shop</h3>
+
+ Categories<a href="getAllCategories"> Display  </a><br>
+	<br> 
+Suppliers<a href="getAllSuppliers"> Display  </a><br>
+<br>   
+Products<a href="getAllProducts"> Display  </a><br></center>
+<br> 
+
+<img class="img-responsive" img src="Resources/Images/90.jpg"  width="460" height="345"><br>
 </body>
 </html>

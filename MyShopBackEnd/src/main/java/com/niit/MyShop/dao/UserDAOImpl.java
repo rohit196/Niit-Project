@@ -59,7 +59,7 @@ public class UserDAOImpl implements UserDAO{
 		@SuppressWarnings("deprecation")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
-		@SuppressWarnings({ "unchecked", "deprecation" })
+		@SuppressWarnings({ "unchecked" })
 		List<User> list = (List<User>) query.list();
 		
 		if (list != null && !list.isEmpty()) {
@@ -70,8 +70,10 @@ public class UserDAOImpl implements UserDAO{
 	}
 	
 	@Transactional
-	public boolean isValidUser(String username, String password, boolean isAdmin) {
-		String hql = "from User where username=" + username; 
+	public boolean isValidUser(String id, String password, boolean isAdmin) {
+		String hql = "from User where id= '" + id + "' and " + " password ='" + password+"'";
+		
+		//String hql = "from User where id="'" + id + "'" and "+" password = "'" + password +"'" ; 
 		@SuppressWarnings("deprecation")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);	
 		System.out.println(query);

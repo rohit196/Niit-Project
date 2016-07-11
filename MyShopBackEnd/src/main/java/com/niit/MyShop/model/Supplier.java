@@ -3,6 +3,7 @@ package com.niit.MyShop.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -11,18 +12,20 @@ import org.springframework.stereotype.Component;
 @Table(name = "SUPPLIER")
 @Component
 public class Supplier {
+	
 	@Id
-	@Column(name = "id")
-	private String id;
+	@Column(name = "sid")
+	private String sid;
 	private String name;
 	private String address;
 	
 	
-	public String getId() {
-		return id;
+	
+	public String getSid() {
+		return sid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setSid(String sid) {
+		this.sid = sid;
 	}
 	public String getName() {
 		return name;
@@ -36,7 +39,5 @@ public class Supplier {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
 	
 }

@@ -13,28 +13,69 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+<style type="text/css">
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #ccc;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+	background-color: #f9f9f9
+}
+
+</style>
+
+
 </head>
-<body>
+<body style="background-image: url('<c:url value="Resources/Images/70.jpg"/>')">
 <h3> ADD SUPPLIER</h3>
 <c:url var="addAction" value="/supplier/add"></c:url>
 
 <form:form action="${addAction}" commandName= "supplier">
 <table>
 <tr>
-<td><form:label path="id">
-<spring:message text="ID" />
+<td><form:label path="sid">
+<spring:message text="id" />
 </form:label></td>
 <c:choose>
-<c:when test="${!empty supplier.id}">
-<td><form:input path="id" disabled="true" readonly="true" /></td>
+<c:when test="${!empty supplier.sid}">
+<td><form:input path="sid" disabled="true" readonly="true" /></td>
 </c:when>
 <c:otherwise>
-<td><form:input path="id" type="number" pattern=".{3,4}" required="true" title="id should be in between 6 to 7 characters"></form:input>
+<td><form:input path="sid" type="number" pattern=".{3,4}" required="true" title="id should be in between 6 to 7 characters"></form:input>
 </td>
 </c:otherwise>
 </c:choose>
 <tr>
-<form:input path="id" hidden="true" />
+<form:input path="sid" hidden="true" />
 <td>
 
 <form:label path="name">
@@ -74,11 +115,11 @@
 </tr>
 <c:forEach items="${supplierList}" var="supplier">
 <tr>
-<td>${supplier.id}</td>
+<td>${supplier.sid}</td>
 <td>${supplier.name}</td>
 <td>${supplier.address}</td>
-<td><a href="<c:url value='/supplier/edit/${supplier.id}' />">EDIT</a></td>
-<td><a href="<c:url value='/supplier/remove/${supplier.id}' />">DELETE</a></td>
+<td><a href="<c:url value='/supplier/edit/${supplier.sid}' />">EDIT</a></td>
+<td><a href="<c:url value='/supplier/remove/${supplier.sid}' />">DELETE</a></td>
 </tr>
 </c:forEach>
 </c:if>

@@ -18,7 +18,45 @@ public class User {
 		@Column(name = "username")
 		private String username;
 		private String password;
+		private String fname;
+		private String sname;
+		private String email;
+		private String address;
+		private int mob_no;
 		private boolean isAdmin;
+		
+		
+		public String getFname() {
+			return fname;
+		}
+		public void setFname(String fname) {
+			this.fname = fname;
+		}
+		public String getSname() {
+			return sname;
+		}
+		public void setSname(String sname) {
+			this.sname = sname;
+		}
+		public String getEmail() {
+			return email;
+		}
+		public void setEmail(String email) {
+			this.email = email;
+		}
+		public String getAddress() {
+			return address;
+		}
+		public void setAddress(String address) {
+			this.address = address;
+		}
+		public int getMob_no() {
+			return mob_no;
+		}
+		public void setMob_no(int mob_no) {
+			this.mob_no = mob_no;
+		}
+	
 			
 		
 		public String getUsername() {

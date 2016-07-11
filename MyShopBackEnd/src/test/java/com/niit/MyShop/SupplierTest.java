@@ -1,9 +1,9 @@
 package com.niit.MyShop;
 
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.query.Query;
+//import org.hibernate.query.Query;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.MyShop.dao.SupplierDAO;
@@ -25,34 +25,46 @@ public static void main(String[] args) {
 		supplier.setName("Ethos");
 		supplier.setAddress("Pune");*/
 		
-		supplier.setId("1002");
+		supplier.setSid("1002");
 		supplier.setName("helosssss");
 		supplier.setAddress("Mumbai");
 		supplierDAO.saveOrUpdate(supplier);
 		
-		supplier.setId("1003");
+		supplier.setSid("1003");
 		supplier.setName("hollaa");
-		supplier.setAddress("Mumbai");
-				
+		supplier.setAddress("Mumbai");		
 		supplierDAO.saveOrUpdate(supplier);
+		
+		
+		supplier.setSid("1004");
+		supplier.setName("helo");
+		supplier.setAddress("Chennai");			
+		supplierDAO.saveOrUpdate(supplier);
+		
+		
+		List<Supplier> list = supplierDAO.list();
+		for(Supplier sup : list)
+		{
+			System.out.println(sup.getSid() + ":" + sup.getName() + ":" + sup.getAddress());
+		}
 		//Category c = categoryDao.get(1000);
 		//System.out.println(c.getId());
 		
-	/*	List<Supplier> sList = supplierDAO.list();
+		/*List<Supplier> sList = supplierDAO.list();
 		Iterator i = (Iterator) sList.iterator();
 		while(i.hasNext()){
 			Supplier s = (Supplier) i.next();
 			System.out.println(s.getAddress());
-		}
+		}*/
 		
 		
-		System.out.println("in supplier");
-	}*/
+		//System.out.println("in supplier");
+	}
 	 
-		 System.out.println(supplierDAO.get("101").getName());
+		 //System.out.println(supplierDAO.get("101").getName());
 }
 
-}
+
 
 
 

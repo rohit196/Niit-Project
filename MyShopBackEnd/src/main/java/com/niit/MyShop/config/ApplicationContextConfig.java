@@ -2,6 +2,7 @@ package com.niit.MyShop.config;
 
 import java.util.Properties;
 
+
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -66,6 +67,7 @@ public class ApplicationContextConfig {
     	sessionBuilder.addAnnotatedClass(User.class);
     	sessionBuilder.addAnnotatedClass(Supplier.class);
     	sessionBuilder.addAnnotatedClass(Product.class);
+    	System.out.println("inside Session Factory");
     	return sessionBuilder.buildSessionFactory();
     }
     
@@ -77,19 +79,19 @@ public class ApplicationContextConfig {
 	}
     
     @Autowired
-    @Bean(name = "categoryDao")
+    @Bean(name = "categoryDAO")
     public CategoryDAO getCategoryDao(SessionFactory sessionFactory) {
     	return new CategoryDAOImpl(sessionFactory);
     }
     
     @Autowired
-    @Bean(name = "userDao")
+    @Bean(name = "userDAO")
     public UserDAO getUserDao(SessionFactory sessionFactory) {
     	return new UserDAOImpl(sessionFactory);
     }
     
     @Autowired
-    @Bean(name = "supplierDao")
+    @Bean(name = "supplierDAO")
     public SupplierDAO getSupplierDao(SessionFactory sessionFactory){
     	return new SupplierDAOImpl(sessionFactory);
     }

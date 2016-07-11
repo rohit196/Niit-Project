@@ -36,18 +36,19 @@ public  class ProductDAOImpl implements ProductDAO{
 
 	@Transactional
 	public void saveOrUpdate(Product product) {
+		System.out.println("$$$$$$$$"+product.getCategory_fk().getCat_id());
 		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
 
 	@Transactional
 	public void delete(String id) {
 		Product ProductToDelete = new Product();
-		ProductToDelete.setId(id);
+		ProductToDelete = get(id);
 		sessionFactory.getCurrentSession().delete(ProductToDelete);
 	}
 
 	@Transactional
-	public Product product(String id) {
+	public Product get(String id) {
 		String hql = "from Product where id='" + id+"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
@@ -61,11 +62,7 @@ public  class ProductDAOImpl implements ProductDAO{
 		return null;
 	}
 
-	@Override
-	public Product get(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	
 

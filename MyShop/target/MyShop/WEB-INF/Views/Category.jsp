@@ -13,6 +13,46 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  
+  <style type="text/css">
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #ccc;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+	background-color: #f9f9f9
+}
+  </style>
 </head>
 <body>
 <h3> ADD CATEGORY</h3>
@@ -21,22 +61,22 @@
 <form:form action="${addAction}" commandName= "category">
 <table>
 <tr>
-<td><form:label path="id">
-<spring:message text="id" />
+<td>
+<form:label path="cat_id">
+<spring:message text="cat_id" />
 </form:label></td>
 <c:choose>
-<c:when test="${!empty category.id}">
-<td><form:input path="id" disabled="true" readonly="true" /></td>
+<c:when test="${!empty category.cat_id}">
+<td><form:input path="cat_id" type="number" readonly="true"/></td>
 </c:when>
 <c:otherwise>
-<td><form:input path="id" type="number" pattern=".{3,4}" required="true" title="id should be in between 6 to 7 characters"></form:input>
+<td><form:input path="cat_id" type="number" pattern=".{3,4}" required="true" title="id should be in between 6 to 7 characters"></form:input>
 </td>
 </c:otherwise>
 </c:choose>
 <tr>
-<form:input path="id" hidden="true" />
+<%-- <form:input path="cat_id" hidden="true" /> --%>
 <td>
-
 <form:label path="type">
 <spring:message text="Type" />
 </form:label>
@@ -73,13 +113,13 @@
 <th width="60">Edit </th>
 <th width="60">Delete </th>
 </tr>
-<c:forEach items="${categoryList}" var="category">
+<c:forEach items="${categoryList}" var="category" varStatus="status">
 <tr>
-<td>${category.id}</td>
+<td>${category.cat_id}</td>
 <td>${category.type}</td>
 <td>${category.description}</td>
-<td><a href="<c:url value='category/edit/${category.id}' />">EDIT</a></td>
-<td><a href="<c:url value='category/remove/${category.id}' />">DELETE</a></td>
+<td><a href="<c:url value='category/edit/${category.cat_id}' />">EDIT</a></td>
+<td><a href="<c:url value='category/remove/${category.cat_id}' />">DELETE</a></td>
 </tr>
 </c:forEach>
 </c:if>

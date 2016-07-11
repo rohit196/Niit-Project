@@ -3,7 +3,6 @@ com\niit\MyShop\dao\SupplierDAO.class
 com\niit\Project\MyShopBackEnd\App.class
 com\niit\MyShop\dao\SupplierDAOImpl.class
 com\niit\MyShop\dao\ProductDAOImpl.class
-com\niit\MyShop\dao\LoginDAO.class
 com\niit\MyShop\model\Supplier.class
 com\niit\MyShop\dao\CategoryDAO.class
 com\niit\MyShop\model\UserDetails.class

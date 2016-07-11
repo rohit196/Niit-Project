@@ -1,8 +1,12 @@
 package com.niit.MyShop.model;
 
 import javax.persistence.Column;
+//import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -12,16 +16,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class Category {
 	
-	@Id 
-	private String id;
+	@Id
+	@Column(name="cat_id")
+	private String cat_id;
 	private String type;
 	private String description;
 	
-	public String getId() {
-		return id;
+	
+	public String getCat_id() {
+		return cat_id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setCat_id(String cat_id) {
+		this.cat_id = cat_id;
 	}
 	public String getType() {
 		return type;
@@ -35,10 +41,5 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-			
+		
 }

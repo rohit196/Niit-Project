@@ -1,4 +1,4 @@
-package com.niit.MyShop;
+/*package com.niit.MyShop;
 
 //import org.apache.catalina.User;
 
@@ -21,3 +21,4 @@ public class InterfaceController {
 }
 
 
+*/

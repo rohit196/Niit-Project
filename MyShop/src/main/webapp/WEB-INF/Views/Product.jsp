@@ -8,17 +8,56 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SUPPLIERS</title>
+<title>PRODUCTS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
+
+<style type="text/css">
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #ccc;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+	background-color: #f9f9f9
+}
+</style>
 </head>
-<body>
-	<h1>Add a Product</h1>
+<body  style="background-image: url('<c:url value="Resources/Images/80.jpg"/>')">>
+
+	<h1 style="color:orange"> Add a Product</h1>
 
 	<c:url var="addAction" value="/product/add"></c:url>
 
@@ -62,18 +101,18 @@
 			</tr>
 			
 			<tr>
-				<td><form:label path="supplier">
+				<td><form:label path="supplier_fk">
 						<spring:message text="Supplier" />
 					</form:label></td>
 				<%-- <td><form:input path="supplier.name" required="true" /></td> --%>
-				 <td><form:select path="supplier.name" items="${supplierList}" itemValue="name" itemLabel="name" /></td>
+				 <td><form:select path="supplier_fk.name" items="${supplierList}" itemValue="name" itemLabel="name" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="category">
+				<td><form:label path="category_fk">
 						<spring:message text="Category" />
 					</form:label></td>
 				<%-- <td><form:input path="category.name" required="true" /></td> --%>
-				<td><form:select path="category.name" items="${categoryList}" itemValue="name" itemLabel="name" /></td>
+				<td><form:select path="category_fk.type" items="${categoryList}" itemValue="type" itemLabel="type" /></td>
 			</tr>
 			<tr>
 				<td colspan="2"><c:if test="${!empty product.name}">
@@ -89,26 +128,28 @@
 	<h3>Product List</h3>
 	<c:if test="${!empty productList}">
 		<table class="tg">
-			<tr>
-				<th width="80">Product ID</th>
-				<th width="120">Product Name</th>
+			<tr >
+			
+				<th  width="80" >Product ID</th>
+				<th width="120" >Product Name</th>
 				<th width="200">Product Description</th>
-				<th width="80">Price</th>
+				<th width="80" >Price</th>
 				<th width="80">Product Category</th>
 				<th width="80">Product Supplier</th>
 				<th width="60">Edit</th>
 				<th width="60">Delete</th>
 			</tr>
+			
 			<c:forEach items="${productList}" var="product">
 				<tr>
 					<td>${product.id}</td>
 					<td>${product.name}</td>
 					<td>${product.description}</td>
 					<td>${product.price}</td>
-					<td>${product.category.name}</td>
-					<td>${product.supplier.name}</td>
+					<td>${product.category_fk.type}</td>
+					<td>${product.supplier_fk.name}</td>
 					<td><a href="<c:url value='product/edit/${product.id}' />">Edit</a></td>
-					<td><a href="<c:url value='product/remove/${product.id}' />">Delete</a></td>
+					<td><a href="<c:url value='/product/remove/${product.id}' />">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>

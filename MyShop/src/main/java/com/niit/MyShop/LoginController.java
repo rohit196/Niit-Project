@@ -1,4 +1,4 @@
-package com.niit.MyShop;
+/*package com.niit.MyShop;
 	
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Controller;
@@ -49,3 +49,4 @@ package com.niit.MyShop;
 			}
 	}
 
+*/

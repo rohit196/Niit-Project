@@ -37,12 +37,20 @@
     <version>4.3.0.RELEASE</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
 <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>4.3.0.RELEASE</version>
+</dependency>
+
+
+ <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+<!-- <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
     <version>4.3.0.RELEASE</version>
-</dependency>
+</dependency> -->
 
 
 
@@ -60,12 +68,14 @@
     <version>4.3.5.Final</version>
 </dependency> --> 
 
+
 <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
-    <version>5.2.0.Final</version>
+    <version>5.2.1.Final</version>
 </dependency>
+
 
 
 

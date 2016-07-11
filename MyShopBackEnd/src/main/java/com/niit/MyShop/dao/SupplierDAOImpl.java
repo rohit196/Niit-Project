@@ -40,7 +40,7 @@ public class SupplierDAOImpl implements SupplierDAO{
 		@Transactional
 		public String delete(String id){
 			Supplier supplier = new Supplier();
-			supplier.setId(id);
+			supplier.setSid(id);
 			try{
 				sessionFactory.getCurrentSession().delete(supplier);
 			}catch(HibernateException e){
@@ -53,7 +53,7 @@ public class SupplierDAOImpl implements SupplierDAO{
 		
 		@Transactional
 		public Supplier get(String id){
-			String hql = "from Supplier where id = " + "'" + id +"'";
+			String hql = "from Supplier where id ='"+id+"'";
 			Query<Supplier> query = sessionFactory.getCurrentSession().createQuery(hql);
 			
 			@SuppressWarnings({ "deprecation" })
@@ -63,5 +63,21 @@ public class SupplierDAOImpl implements SupplierDAO{
 			}
 			return null;
 		}
+		
+		@Transactional
+		public Supplier getByName(String name) {
+			String hql = "from Supplier where name=" + "'"+ name+"'";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			@SuppressWarnings("unchecked")
+			List<Supplier> list = (List<Supplier>) query.list();
+			
+			if (list != null && !list.isEmpty()) {
+				return list.get(0);
+			}
+			
+			return null;
+		}
+
 		
 }

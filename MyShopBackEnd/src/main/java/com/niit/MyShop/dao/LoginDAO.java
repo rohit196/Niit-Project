@@ -1,4 +1,4 @@
-package com.niit.MyShop.dao;
+/*package com.niit.MyShop.dao;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,4 +18,4 @@ else
 	}
 	
 }
-}
+}*/

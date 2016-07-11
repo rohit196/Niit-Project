@@ -12,23 +12,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
- <style>
-  .Watch-inner > .item > img,
-  .Watch-inner > .item > a > img {
-      
-      width: 85%;
+ 
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
       margin: auto;
   }
   
-  .carousel-inner > .item > img{
+ /*  .carousel-inner > .item > img{
   	height: 85%;
   	width: 85%;
   	border: 1px solid;
   }
-  </style>
+ */  
+ </style>
   </head>
 <body>
-<nav class="navbar nav-default">
+<nav class="navbar navbar-inverse">
 <div class="container-fluid">
 <div class="navbar-header">
 <a class="navbar-brand" href="#"></a>
@@ -37,20 +38,23 @@
 
 <ul class="nav navbar-nav">
 <li class="active"><a href="#" > Home </a></li>
-<li><a href="products.html"> Products </a></li>
+<li><a href="products1.jsp"> Products </a></li>
 <li><a href="#"> Shops </a></li>
 <li><a href="#"> Contact Us </a></li>
 <li><a href="aboutus.html"> About Us</a></li>
 </ul>
+
+
 <ul class="navbar-nav navbar-right">
-<li><a href="SignUp.html"><span class="glyphicon glyphicon-user "></span> Sign up </a></li>
-<li><a href="Login"><span class="glyphicon glyphicon-log-in "></span> Login </a></li>
+<li><a href="SignUp.html"><span class="glyphicon glyphicon-user "> Sign up </span></a></li><br>
+<li><a href="Login"><span class="glyphicon glyphicon-log-in "> Login </span></a></li>
 </ul>
 
 
 </div>
 </nav>      
-   <div class="container-fluid" style="width:40%;">
+   <!-- <div class="container-fluid" style="width:40%;"> -->
+   <div class="col-md-12 col-sm-12 panel">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel" >
     <!-- Indicators -->
@@ -62,20 +66,20 @@
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox" style="width:80%;">
+    <div class="carousel-inner" role="listbox" >
       <div class="item active">
-        <img src="Resources/Images/20.jpg" alt="Mens Watch">
+        <img src="Resources/Images/20.jpg" alt="Mens Watch"  width="900" height="250">
       </div>
-     <!-- <div class="item">
-        <img src="Resources/Images/30.jpg" alt="Mens Watch">
+     <div class="item">
+        <img src="Resources/Images/30.png" alt="Mens Watch" width="900" height="300">
       </div>
     
       <div class="item">
-        <img src="Resources/Images/40.jpg" alt="Women's Watch" width="460" height="345">
-      </div> -->
+        <img src="Resources/Images/40.jpg" alt="Women's Watch" width="900" height="300">
+      </div>
 
       <div class="item">
-        <img src="Resources/Images/50.jpg" alt="Watch">
+        <img src="Resources/Images/50.jpg" alt="Watch"  width="900" height="300">
       </div>
     </div>
 
@@ -90,6 +94,13 @@
     </a>
   </div>
 </div>
+
+<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+<div>
+	Login attempt unseccesSfull<br>
+	${sessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message}
+</div>
+</c:if>
 
 </body>
 </html>

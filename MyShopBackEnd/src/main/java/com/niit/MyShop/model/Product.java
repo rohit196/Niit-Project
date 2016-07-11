@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ForeignKey;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -21,13 +22,12 @@ public class Product {
 	private String description;
 	private double price;
 	@ManyToOne
-    @JoinColumn(name="id",nullable = false, updatable = false, insertable = true)
-	private Supplier supplier;
+    @JoinColumn(name="sid",nullable = false , updatable = false, insertable = true)
+	private Supplier supplier_fk;
 	
 	@ManyToOne
-    @JoinColumn(name="cat_id",nullable = false, updatable = false, insertable = true)
-   	private Category category;
-	
+    @JoinColumn(name="cat_id",nullable = false , updatable = false, insertable = true)
+   	private Category category_fk;
 	
 	public String getId() {
 		return id;
@@ -53,25 +53,17 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-
-	public Supplier getSupplier() {
-		return supplier;
+	public Supplier getSupplier_fk() {
+		return supplier_fk;
 	}
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
+	public void setSupplier_fk(Supplier supplier_fk) {
+		this.supplier_fk = supplier_fk;
 	}
-	
-
-	
-	public Category getCategory() {
-		return category;
+	public Category getCategory_fk() {
+		return category_fk;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-	
-	
-		
+	public void setCategory_fk(Category category_fk) {
+		this.category_fk = category_fk;
+	}	
 		 
 }
