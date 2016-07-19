@@ -1,6 +1,7 @@
 package com.niit.MyShop;
 
 import java.io.IOException;
+
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -56,7 +57,7 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
 	 
 	        if (isUser) {
 	        	System.out.println("inside successHandler User");
-	            return "/Interface";
+	            return "/Success";
 	            
 	        } else if (isAdmin) {
 	        	System.out.println("inside successHandler Admin");
@@ -80,8 +81,5 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
 	    protected RedirectStrategy getRedirectStrategy() {
 	        return redirectStrategy;
 	    }
-
-
-		
 	}
 

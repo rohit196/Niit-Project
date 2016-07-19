@@ -1,9 +1,12 @@
 com\niit\MyShop\model\User.class
+com\niit\MyShop\dao\CartDetailsDAO.class
 com\niit\MyShop\dao\SupplierDAO.class
 com\niit\Project\MyShopBackEnd\App.class
 com\niit\MyShop\dao\SupplierDAOImpl.class
 com\niit\MyShop\dao\ProductDAOImpl.class
 com\niit\MyShop\model\Supplier.class
+com\niit\MyShop\model\GuestCartDetails.class
+com\niit\MyShop\model\CartDetails.class
 com\niit\MyShop\dao\CategoryDAO.class
 com\niit\MyShop\model\UserDetails.class
 com\niit\MyShop\dao\ProductDAO.class
@@ -11,5 +14,6 @@ com\niit\MyShop\dao\UserDAOImpl.class
 com\niit\MyShop\config\ApplicationContextConfig.class
 com\niit\MyShop\model\Product.class
 com\niit\MyShop\dao\CategoryDAOImpl.class
+com\niit\MyShop\dao\CartDetailsDAOImpl.class
 com\niit\MyShop\dao\UserDAO.class
 com\niit\MyShop\model\Category.class

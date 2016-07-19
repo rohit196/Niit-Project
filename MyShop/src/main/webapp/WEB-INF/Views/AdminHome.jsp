@@ -26,8 +26,14 @@
   
 </head>
 <body style="background-color:light-blue;">
+<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Admin Home</a>
+			</div>
 
-<center><h3>Welcome To Watch Shop</h3>
+
+<center><h3>Welcome To Admin Home</h3>
 
  Categories<a href="getAllCategories"> Display  </a><br>
 	<br> 
@@ -37,5 +43,6 @@ Products<a href="getAllProducts"> Display  </a><br></center>
 <br> 
 
 <img class="img-responsive" img src="Resources/Images/90.jpg"  width="460" height="345"><br>
+<%-- <li><a href="<c:url value="/j_spring_security_Logout"/>">Logout</a></li> --%>
 </body>
 </html>

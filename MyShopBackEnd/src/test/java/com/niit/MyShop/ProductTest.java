@@ -58,6 +58,24 @@ public class ProductTest {
 		System.out.println(product.getCategory_fk().getDescription()+" from product");
 		//productDAO.saveOrUpdate(product);
 		productDAO.saveOrUpdate(product);
+		
+		
+		System.out.println("#########Before Update");
+		product.setId("22");
+		product.setName("Rolex");
+		product.setDescription("Mens Watch");
+		product.setPrice(500000.0);
+		category= categoryDAO.get("1000");
+		System.out.println("@@@@@@@"+category.getCat_id());
+		product.setCategory_fk(category);
+		supplier= supplierDAO.get(",2006");
+		System.out.println("supplier: "+ supplier.getSid());
+		product.setSupplier_fk(supplier);
+		System.out.println(product.getCategory_fk().getDescription()+" from product");
+		//productDAO.saveOrUpdate(product);
+		productDAO.saveOrUpdate(product);
+		
+		
 /*		
 		product.setId("3");
 		product.setName("Titan");

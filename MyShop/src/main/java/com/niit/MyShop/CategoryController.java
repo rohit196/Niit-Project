@@ -61,6 +61,15 @@ public class CategoryController {
 */
 	@Autowired 
 	private CategoryDAO categoryDAO;
+	
+	@RequestMapping("/onLoad")
+	public ModelAndView onLoad(){
+		ModelAndView mv = new ModelAndView("/Interface");
+		mv.addObject("category", new Category());
+		mv.addObject("categoryList", categoryDAO.list());
+		return mv;
+	}
+	
 	@RequestMapping(value = "/getAllCategories", method = RequestMethod.GET)
 	 public String listCategories(Model model){
 		 model.addAttribute("category", new Category());

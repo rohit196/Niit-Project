@@ -16,6 +16,10 @@
   
   
   <style type="text/css">
+  .body{
+  width:100%;
+  margin:auto;
+  }
 .tg {
 	border-collapse: collapse;
 	border-spacing: 0;

@@ -34,6 +34,17 @@ public class UserTest {
 		user.setSname("mehta");
 		user.setMob_no(927283738);
 		t.createUser(user);
+		
+		user.setId("345");
+		user.setUsername("Admin");
+		user.setPassword("admin");
+		user.setAdmin(true);
+		user.setAddress("Mumbai");
+		user.setEmail("rohitgmail");
+		user.setFname("rohit");
+		user.setSname("mehta");
+		user.setMob_no(927283737);
+		t.createUser(user);
 	}
 	
 }

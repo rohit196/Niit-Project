@@ -1,5 +1,7 @@
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\Project\MyShopBackEnd\App.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\config\ApplicationContextConfig.java
+C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\model\CartDetails.java
+C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\model\Signup_Details.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\ProductDAOImpl.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\SupplierDAO.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\CategoryDAOImpl.java
@@ -7,7 +9,10 @@ C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\Supplier
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\LoginDAO.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\CategoryDAO.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\ProductDAO.java
+C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\CartDetailsDAO.java
+C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\CartDetailsDAOImpl.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\UserDAOImpl.java
+C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\model\GuestCartDetails.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\model\User.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\model\Product.java
 C:\Users\User\workspace\MyShopBackEnd\src\main\java\com\niit\MyShop\dao\UserDAO.java

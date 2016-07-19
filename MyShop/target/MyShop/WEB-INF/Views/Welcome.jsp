@@ -7,5 +7,6 @@
 </head>
 <body>
 Welcome ${name}. You are now authenticated.
+<a href="logout">Logout</a>
 </body>
 </html>

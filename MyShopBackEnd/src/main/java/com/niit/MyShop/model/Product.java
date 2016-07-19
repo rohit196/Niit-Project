@@ -29,6 +29,7 @@ public class Product {
     @JoinColumn(name="cat_id",nullable = false , updatable = false, insertable = true)
    	private Category category_fk;
 	
+	
 	public String getId() {
 		return id;
 	}

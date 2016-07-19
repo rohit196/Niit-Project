@@ -1,33 +1,56 @@
 package com.niit.MyShop;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.MyShop.dao.CategoryDAO;
+import com.niit.MyShop.dao.ProductDAO;
 import com.niit.MyShop.dao.UserDAO;
+import com.niit.MyShop.model.Category;
+import com.niit.MyShop.model.Product;
+import com.niit.MyShop.model.User;
 import com.niit.MyShop.model.UserDetails;
 @Controller
 public class UserController {
-			
+/*			
 	@Autowired
 	UserDAO userDAO;
+	ProductDAO productDAO;
+	CategoryDAO categoryDAO;
 	
 	@RequestMapping("/Login")
 	public String getLogin()
 	{
 		return "Login";
 	}
-	/*@RequestMapping("/welcome")
+	@RequestMapping("/welcome")
 	public String basic(){
 		return "welcome";
-	}*/
+	}
 	@RequestMapping("/")
-	public String getLanding()
+	public String getlanding(){
+	 public String getSelectedProduct(@PathVariable("id") String id , Model model)
 	{
 		System.out.println("Interface page called..");
+			System.out.println("getSelectedProduct");
+			model.addAttribute("selectedProduct", this.productDAO.get(id));
+			model.addAttribute("categoryList", this.categoryDAO.list());
+	
 		return "Interface";
 	}
 	@RequestMapping("/Success")
@@ -44,6 +67,13 @@ public class UserController {
 	{
 		return "Interface";
 	}
+	
+	
+	@RequestMapping(method=RequestMethod.GET, value="/Login")
+	public String testUseLogin(Model model){
+		return "Login";
+	}
+	
 	@RequestMapping("/contact")
 	public String getContact()
 	{
@@ -54,20 +84,23 @@ public class UserController {
 	{
 		return "aboutus";
 	}
-	@RequestMapping("/signup")
+	@RequestMapping("/Signup")
 	public String getSignup()
 	{
-		return "signup";
-	}
-	@RequestMapping("/isValidUser")
-	public ModelAndView isValidUser(@RequestParam(value = "name") String name,
+		return "Signup";
+	}*/
+	
+	
+	//Static Implementation 
+/*	@RequestMapping("/isValidUser")
+	public ModelAndView isValidUser(@RequestParam(value = "id") String id,
 			@RequestParam(value = "password") String password) {
 		
 		ModelAndView mv;
 		System.out.println("in controller");
 
 		String message;
-		if(userDAO.isValidUser(name,password,true)){
+		if(userDAO.isValidUser(id,password,true)){
 			message = "Valid Credentials";
 			mv = new ModelAndView("AdminHome");
 			mv.addObject("message",message);
@@ -79,14 +112,200 @@ public class UserController {
 			mv.addObject("message",message);
 		}
 		mv.addObject("message",message);
-		mv.addObject("name",name);
+		mv.addObject("name",id);
 		return mv;
+		}*/
+/*	@RequestMapping("/register")
+	public ModelAndView registerUser(@ModelAttribute UserDetails userDetails) {
+		userDAO.saveOrUpdate(userDetails);
+	  return new ModelAndView("/AdminHome");
+	 }*/
+	/*@RequestMapping(value="/", method = RequestMethod.GET)
+	public String home(Model model) {
+		List<Category> ls = new ArrayList<Category>();
+		ls=this.categoryDAO.list();
+		model.addAttribute("category",new Category());
+		model.addAttribute("categoryList",ls);
+		model.addAttribute("product", new Product());
+		model.addAttribute("productList", this.productDAO.list());
+	  return "Interface";
+	 }
+*/
+
+	@Autowired
+	private CategoryDAO categoryDAO;
+	
+	@Autowired
+	private ProductDAO productDAO;
+
+   @Autowired
+	UserDAO userDAO;
+   
+   @Autowired
+   User user;
+    
+ /*   @RequestMapping("/isValidUser")
+	public ModelAndView isValidUser(@RequestParam(value = "id") String id,
+			@RequestParam(value = "password") String password) {
+		System.out.println("in controller");
+        Category category;
+        Product product;
+        List<Category> categoryList=new ArrayList<Category>();
+        List<Product> productList=new ArrayList<Product>();
+		String message;
+		ModelAndView mv ;
+		if (userDAO.isValidUser(id, password,true)) 
+		{
+			if(id=="admin")
+			{
+			message = "Valid credentials";
+			 mv = new ModelAndView("AdminHome");
+			}
+			else{
+				message = "Valid credentials";
+				 mv = new ModelAndView("Enduser");
+			}
+		} else {
+			message = "Invalid credentials";
+			 mv = new ModelAndView("Login");
 		}
+		mv.addObject("category", new Category());
+		mv.addObject("categoryList", this.categoryDAO.list());
+		mv.addObject("product", new Product());
+		mv.addObject("productList", this.productDAO.list());
+		mv.addObject("message", message);
+		mv.addObject("name", id);
+		return mv;
+	}*/
+	
+	
 	@RequestMapping("/register")
 	public ModelAndView registerUser(@ModelAttribute UserDetails userDetails) {
 		userDAO.saveOrUpdate(userDetails);
 	  return new ModelAndView("/AdminHome");
 	 }
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public String home(Model model) {
+		List<Category> ls=new ArrayList<Category>();
+		ls=this.categoryDAO.list();
+		model.addAttribute("category",new Category());
+		model.addAttribute("categoryList",ls);
+		model.addAttribute("product", new Product());
+		model.addAttribute("productList", this.productDAO.list());
+	  return "Interface";
+	 }
+	
+	@RequestMapping("/Interface")
+	public String getHome(){
+		return "Interface";
+	}
+	@RequestMapping("/Login")
+	String showLoginController(){
+		System.out.println("in Login");
+		return "Login";
+	}	
+	/*@RequestMapping("/isValidUser")
+	public ModelAndView isValidUser(@RequestParam(value = "id") String id,
+			@RequestParam(value = "password") String password) {
+		
+		ModelAndView mv;
+		System.out.println("in controller");
 
-
+		String message;
+		if(userDAO.isValidUser(id,password,true)){
+			message = "Valid Credentials";
+			mv = new ModelAndView("AdminHome");
+			mv.addObject("message",message);
+		}
+		else
+		{
+			message = ("Invalid Credentiasl");
+			mv = new ModelAndView("Login");
+			mv.addObject("message",message);
+		}
+		mv.addObject("category", new Category());
+		mv.addObject("categoryList", this.categoryDAO.list());
+		mv.addObject("product", new Product());
+		mv.addObject("productList", this.productDAO.list());
+		mv.addObject("message",message);
+		mv.addObject("name",id);
+		return mv;
+	}	
+*/	
+	@RequestMapping("/AdminHome")
+	public  ModelAndView showAdminController(HttpSession session ){
+		System.out.println("in adminhome");
+		if(session.getAttribute("loggedAdminId")== null || session.getAttribute("loggedAdminId")== ""){
+			session.setAttribute("loggedAdminRole", "ROLE_ADMIN");
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String id = auth.getName();
+			session.setAttribute("loggedAdminid", id);
+			session.setAttribute("loggedAdmin", userDAO.get(id));
+			System.out.println("session loggedAdmin set to ="+id+"logged Admin = "+((User)session.getAttribute("loggedAdmin")).getId());
+		}
+		ModelAndView model = new ModelAndView("AdminHome");
+		return model;
+	}	
+	@RequestMapping("/Shops")
+	String showShopsController(){
+		System.out.println("in Login");
+		return "Shops";
+	}	
+	@RequestMapping("/Signup")
+	public String getSignup()
+	{
+		return "Signup";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(){
+		return "Interface";
+	}
+	@RequestMapping("/Success")
+	public ModelAndView success(HttpSession session){
+		System.out.println("inside success");
+		if(session.getAttribute("loggedUserId")== null || session.getAttribute("loggedUserId")==""){
+			session.setAttribute("loggedUserRole","ROLE_USER");
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String id = auth.getName();
+			session.setAttribute("loggedUserid", id);
+			session.setAttribute("loggedUser", userDAO.get(id));
+			System.out.println("session loggedUserid set to ="+id+"logged user ="+((User)session.getAttribute("loggedUser")).getId());
+		}
+		ModelAndView model = new ModelAndView("Success");
+		return model;
+	}
+	
+	
+	/*@RequestMapping(method=RequestMethod.GET,value="/Login")
+	public String validateUser(@RequestParam("username") String username ,@RequestParam("password") String password){
+		System.out.println("UserController"+username+password);
+		ModelAndView model;
+		
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.scan("com.niit.MyShop");
+		context.refresh();
+		
+		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
+		return "Interface";
+		
+	}
+	*/
+	
+	/*@RequestMapping(method=RequestMethod.GET,value="/userHasLogged")
+	public String userHasLogged(HttpSession session,Model model){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		
+		user = userDAO.get(username);
+		System.out.println("user is now instatiated "+user.getFname());
+		
+		if(session.getAttribute("loggedUserName")==null || session.getAttribute("loggedUserName")==""){
+			session.setAttribute("loggedUserRole", "ROLE_USER");
+			session.setAttribute("loggedUserName", username);
+			System.out.println("userhaslogged");
+			System.out.println("session loggedUsername"+username+"logged user"+user);
+		}
+		return "Success";
+	}*/
 }

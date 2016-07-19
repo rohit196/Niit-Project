@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+/*import com.niit.MyShop.model.Signup_Details;*/
 import com.niit.MyShop.model.User;
 import com.niit.MyShop.model.UserDetails;
 
@@ -68,6 +70,10 @@ public class UserDAOImpl implements UserDAO{
 		
 		return null;
 	}
+	/*@Transactional
+	public void saveOrUpdate(Signup_Details signup_Details){
+		sessionFactory.getCurrentSession().saveOrUpdate(signup_Details);
+	}*/
 	
 	@Transactional
 	public boolean isValidUser(String id, String password, boolean isAdmin) {

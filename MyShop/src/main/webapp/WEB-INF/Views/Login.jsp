@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<body style="background-color:White;" style="background-image: url('<c:url value="Resources/Images/70.jpg"/>')">>
+<body style="background-color:White;" style="background-image: url('<c:url value="Resources/Images/70.jpg"/>')">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -35,23 +35,43 @@
     </div>
     <br>
     <br>
-
+<!-- j_spring_security_check -- >
+<!-- j_username -->
+<!-- j_password -->
+<%-- "<c:url value='j_spring_security_check' />" --%>
     <p><font color="red">${errorMessage}</font></p>
-    <form:form action="j_spring_security_check" method="post" >
+   <form:form action="perform_login" method='POST'>
+		<%--   <form:form action="isValidUser" method="POST"> --%>
     <table align="center">
         <td><b>Name :</b></td>
-        <td><input name="j_username" type="text" /></td>
+        <td><input name="username" type="text" /></td>
    
         <td><b>Password :</b></td>
-        <td><input name="j_password" type="password" /></td>
+        <td><input name="password" type="password" /></td>
         
         </table>
        <center><input type="submit" class="btn btn-primary" value="Login"/>
-       <input type= reset class="btn btn-primary" value="Clear">
+       <input type= "reset" class="btn btn-primary" value="Clear">
        <br>
        <div class="checkbox">
       <label><input type="checkbox"> Remember me</label></div></center>
+      
+        <%-- <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" /> --%>
+			<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span ></span>
+							Welcome!</a></li>
+					<li><a href="isValidUser"><span class="glyphicon glyphicon-user"></span>
+							${name}</a></li>
+				</ul>
+       </form:form>
     </div>
-    </form:form>
+ 
+    
+   <%--  <div>
+	Login attempt unsuccessfull<br>
+	${sessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message}
+</div> --%>
+    
 </body>
 </html>

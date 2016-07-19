@@ -101,5 +101,13 @@ public class ProductController {
 	
 		return "Product";
 	}
+	@RequestMapping("product/get/{id}")
+	public String getSelectedProduct(@PathVariable("id") String id , Model model){
+		System.out.println("getSelectedProduct");
+		model.addAttribute("selectedProduct", this.productDAO.get(id));
+		model.addAttribute("categoryList", this.categoryDAO.list());
+		return "Interface";
+	}
+	
 }
 
