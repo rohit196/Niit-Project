@@ -16,6 +16,7 @@ public interface UserDAO {
 	public void saveOrUpdate(UserDetails userDetails);
 	/*public void saveOrUpdate(Signup_Details signup_Details);*/
 	public void delete(String id);
+	public void enable(String id ,boolean enabled);
 	
 	public boolean isValidUser(String id, String password, boolean isAdmin);
 

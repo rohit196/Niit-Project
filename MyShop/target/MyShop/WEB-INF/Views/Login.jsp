@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<body style="background-color:White;" style="background-image: url('<c:url value="Resources/Images/70.jpg"/>')">
+<style="background-color:White;" style="background-image: url('<c:url value="Resources/Images/70.jpg"/>')"></style>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -35,19 +35,20 @@
     </div>
     <br>
     <br>
-<!-- j_spring_security_check -- >
-<!-- j_username -->
-<!-- j_password -->
-<%-- "<c:url value='j_spring_security_check' />" --%>
+
+<%--  <div id="LoginModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<div class="modal-content">
     <p><font color="red">${errorMessage}</font></p>
-   <form:form action="perform_login" method='POST'>
-		<%--   <form:form action="isValidUser" method="POST"> --%>
-    <table align="center">
-        <td><b>Name :</b></td>
-        <td><input name="username" type="text" /></td>
+ --%>   
+ <form:form action="perform_login" method='POST'>
+
+		
+		
+		<%--   <form:form action="isValidUser" method="POST"> --%><!-- <table align="center"> -->
+        <tr><td><b>Name :</td><td><input name="username" type="text" /></td></tr>
    
-        <td><b>Password :</b></td>
-        <td><input name="password" type="password" /></td>
+        <tr><td>Password :</td><td><input name="password" type="password" /></td></tr>
         
         </table>
        <center><input type="submit" class="btn btn-primary" value="Login"/>
@@ -56,8 +57,12 @@
        <div class="checkbox">
       <label><input type="checkbox"> Remember me</label></div></center>
       
-        <%-- <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" /> --%>
+       
+       	<!-- <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+			<button type="submit" class="btn btn-primary">Login</button>
+		</div>
+ -->    
 			<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span ></span>
 							Welcome!</a></li>
@@ -67,11 +72,15 @@
        </form:form>
     </div>
  
-    
-   <%--  <div>
+</body>
+</html>
+<!-- j_spring_security_check -- >
+<!-- j_username -->
+<!-- j_password -->
+<%-- "<c:url value='j_spring_security_check' />" --%>
+    <%-- <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" /> --%>
+			   <%--  <div>
 	Login attempt unsuccessfull<br>
 	${sessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message}
 </div> --%>
-    
-</body>
-</html>

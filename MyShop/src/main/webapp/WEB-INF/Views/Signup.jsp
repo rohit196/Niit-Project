@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -27,63 +30,53 @@ background-image: url(Resources/Images/101.jpg);
 </head>
 <body>
 <body style="background-color:orange;">
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" >Wheel Spin</a>
     </div>
-<!-- 
-<ul class="nav navbar-nav">
-      <li><a href="home"><span class="glyphicon glyphicon-home"></span></a></li>
-      <li><a href="aboutus">About Us</a></li>
-      <li><a href="contact">Contact Us</a></li>
-     </ul>
-      <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="loginUser"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-      
-  </div>
+ --><!-- 
 </nav> -->
 
 <div class="container" style="margin: 10px;">
       <div class="row"><h2>Create Account</h2>
   </div>
  
-  <form role="form" method="POST" action="Interface">
-    <div class="form-group">
-      <label for="firstname" class="col-md-2">
+  <form:form role="form" method="POST" action="Signup">
+    <!-- <div class="form-group">
+      <label for="fname" class="col-md-2">
         First Name:
       </label>
-      <div class="col-md-9">
-        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name">
-      </div>
- 
- 
+      <div class="col-md-9"> -->
+      First Name<input type="text" name="fname"  placeholder="Enter First Name">
+      <!-- </div> -->
+ <!-- id="fname" -->
+ <!-- class="form-control" -->
     </div>
  
-    <div class="form-group">
-      <label for="lastname" class="col-md-2">
+    <!-- <div class="form-group"> -->
+     <!--  <label for="sname" class="col-md-2">
         Last Name:
       </label>
-      <div class="col-md-9">
-        <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name">
-      </div>
- 
- 
+ -->      
+ <!-- <div class="col-md-9"> -->
+        <input type="text"  name="sname"  placeholder="Enter Last Name">
+     <!--  </div> -->
+ <!-- id="sname" -->
+ <!-- class="form-control" -->
     </div>
  
     <div class="form-group">
-      <label for="emailaddress" class="col-md-2">
+      <label for="email" class="col-md-2">
         Email address:
       </label>
       <div class="col-md-9">
-        <input type="email" class="form-control" id="emailaddress" placeholder="Enter email address">
+        <input type="email" class="form-control" name="email"  placeholder="Enter email address">
         <p class="help-block">
           Example: yourname@domain.com
         </p>
       </div>
- 
+ <!-- id="email" -->
  
     </div>
  
@@ -92,11 +85,11 @@ background-image: url(Resources/Images/101.jpg);
         Password:
       </label>
       <div class="col-md-9">
-        <input type="password" class="form-control" id="password" placeholder="Enter Password">
+        <input type="password" class="form-control" name="password"  placeholder="Enter Password">
         
        </div>
    </div>
- 
+ <!-- id="password" -->
     
  
     <div class="form-group">
@@ -138,7 +131,7 @@ background-image: url(Resources/Images/101.jpg);
         </button>
       </div>
     </div>
-  </form>
+  </form:form>
   </div>
 
 

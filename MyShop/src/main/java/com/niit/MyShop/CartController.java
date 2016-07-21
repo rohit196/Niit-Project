@@ -1,5 +1,7 @@
 package com.niit.MyShop;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -62,7 +64,7 @@ public class CartController implements ApplicationContextAware{
 	
 	
 	@RequestMapping(method=RequestMethod.GET,value="/user/addToCart/{pId}/{cId}")
-	public String addtoCartUser(HttpSession session, @PathVariable("pId") int pId, @PathVariable("cId") int cId){
+	public String addtoCartUser(HttpSession session, @PathVariable("pId") String  pId, @PathVariable("cat_id") String cId){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("auth: "+auth);
 		
@@ -71,7 +73,7 @@ public class CartController implements ApplicationContextAware{
 		if (session.getAttribute("loggedUserName") == null || session.getAttribute("loggedUserName") == "") {
 			guestCart = (GuestCartDetails) context.getBean("guestCartDetails");
 			Product p = productDAO.get("pId");
-			guestCart.setpId("pId");
+			guestCart.setpId("id");
 			guestCart.setcId(p.getCategory_fk().getCat_id());
 			guestCart.setsId(p.getSupplier_fk().getSid());
 			/*guestCart.setPrice(p.getPrice());*/
@@ -87,29 +89,35 @@ public class CartController implements ApplicationContextAware{
 			cartDetails.setPrice(product.getPrice());
 			cartDetails.setQty("1");
 			
-			/*List<CartDetails> cart = user.getuCart();
+			List<CartDetails> cart = cartDetailsDAO.getCart(user.getId());
 			if(cart == null){
 				cart = new ArrayList<CartDetails>();
 			}
-			cart.add(cartItem);*/
+			cart.add(cartDetails);
 			cartDetailsDAO.save(cartDetails);
 			//userDao.saveOrUpdate(user);
 			System.out.println("saved into cart!");
 		}
 		
-		switch (cId) {
-		case 1:
+	/*	switch (pId) {
+		case "1":
 			return "redirect: /MyShop/user/product/1";
 		
-		case 2: 
+		case "2": 
 			return "redirect: /MyShop/user/product/2";
 			
 		default:
-			return "redirect: user/product/1";
+			return "redirect: user/product/1";*/
+		return "redirect: /MyShop/user/product/";
 		}
 		
-	}
-		
+		@RequestMapping(method=RequestMethod.GET , value="/addToCart/{pId}")
+		public void addToCart(@PathVariable("id") String id){
+			GuestCartDetails guestCart = (GuestCartDetails) context.getBean("guestCartDetails");
+			System.out.println("GuestDetails Price"+guestCart.getPrice());
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			System.out.println("auth"+auth.getPrincipal().toString());
+		}
 		
 		
 		
@@ -120,6 +128,12 @@ public class CartController implements ApplicationContextAware{
 			ModelAndView model = new ModelAndView("displayCart");
 			user = (User) session.getAttribute("loggedUser");
 			List<CartDetails> cartList = cartDetailsDAO.getCart(user.getId());
+			
+			Iterator<CartDetails> i = cartList.iterator();
+			while(i.hasNext()){
+				CartDetails cd = i.next();
+				System.out.println("supplier"+cd.getSupplier_fk().getSid() );
+			}
 			model.addObject("cartList",cartList);
 			return model;
 		}

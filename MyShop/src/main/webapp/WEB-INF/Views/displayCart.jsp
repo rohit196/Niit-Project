@@ -49,14 +49,14 @@
 <form method="post" action="${action}">
 <table class= "table table-bordered">
 <thead>
-<tr>
+	<tr>
 		<td>Product</td>
-		<td>Product Details</td>
+		<!-- <td>Product Details</td> -->
 		<td>Quantity</td>
 		<td>Price</td>
 		<td>Sub total</td>
 		<td>Delete</td>
-		<td>Save</td>
+		<td>Change Quantity</td>
 </tr>
 </thead>
 <tbody>
@@ -68,7 +68,7 @@
 	<td>${cartItem.price}</td>
 	<td>${(cartItem.qty)*(cartItem.price)}</td>
 	<td><a href="<c:url value='deleteFromCart/${cartItem.product_fk.id}/${cartItem.category_fk.cat_id}/${cartItem.supplier_fk.sid}'/>"><span class="glyphicon glyphicon-remove"></span></a></td>
-	<td><a href="#" data-toggle="modal" data-target="#updateQty" onclick="updateQty('${cartItem.product_fk.id}','${cartItem.supplier_fk.sid}','${cartItem.supplier_fk.name}')"><span class="glyphicon glyphicon-edit"></span></a></td>
+	<td><a href="#" data-toggle="modal" data-target="#updateQty" onclick="updateQty('${cartItem.product_fk.id}',${cartItem.supplier_fk.sid},'${cartItem.supplier_fk.name}')"><span class="glyphicon glyphicon-edit"></span></a></td>
 </tr>
 <c:set var="total" value="${total + ((cartItem.qty)*(cartItem.price))}"></c:set>
 </c:forEach>
@@ -97,8 +97,8 @@
 	</div>
 	<div class="modal-body">
 	<table style="border-collapse: separate; border-spacing: 8px 10px;">
-	<input id="updateProductId" name="updateProductId" type="number" name="pId"/>
-	<input id="updateSupplierId" name="updateSupplierId" type="number" name="sid"/>
+	<input id="updateProductId" name="updateProductId" type="number" name="pId" />
+	<input id="updateSupplierId" name="updateSupplierId" type="number" name="sid" />
 	<tr><td>Product:</td><td><input id="updateProduct" type="text" readonly/></td></tr>
 	<tr><td>Supplier Name:</td><td><input id="updateSupplierName" type="text" readonly/></td></tr>
 	<tr><td>Product Quantity:</td><td><input type="text" name="qty"></td></tr>

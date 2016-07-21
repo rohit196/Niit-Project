@@ -26,8 +26,10 @@ public class User {
 		private String address;
 		private int mob_no;
 		private boolean isAdmin;
+		private boolean enabled;
 		
 		
+
 		@OneToMany(fetch=FetchType.EAGER)
 		public String getId() {
 			return id;
@@ -88,6 +90,12 @@ public class User {
 		public void setAdmin(boolean isAdmin) {
 			this.isAdmin = isAdmin;
 		}
-		
+		public boolean isEnabled() {
+			return enabled;
+		}
+
+		public void setEnabled(boolean enabled) {
+			this.enabled = enabled;
+		}
 		
 }

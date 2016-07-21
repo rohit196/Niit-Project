@@ -94,6 +94,14 @@ public class UserDAOImpl implements UserDAO{
 		return false;
 	}
 
+		@Transactional
+		public void enable(String id,boolean enable)
+		{
+			Query query = sessionFactory.getCurrentSession().createQuery("update User set enabled='"+enable+"'where id="+id);
+			query.executeUpdate();
+		}
+	
+	
 
 	public void saveOrUpdate(UserDAO userDAO) {
 		// TODO Auto-generated method stub

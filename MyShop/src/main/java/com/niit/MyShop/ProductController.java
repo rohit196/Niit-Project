@@ -4,6 +4,10 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.security.access.method.P;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,11 +15,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.MyShop.dao.CategoryDAO;
 import com.niit.MyShop.dao.ProductDAO;
 import com.niit.MyShop.dao.SupplierDAO;
 import com.niit.MyShop.model.Category;
+import com.niit.MyShop.model.GuestCartDetails;
 import com.niit.MyShop.model.Product;
 import com.niit.MyShop.model.Supplier;
 
@@ -37,7 +43,8 @@ public class ProductController {
 	 * @Qualifier(value="productDAO") public void setProductDAO(ProductDAO ps){
 	 * this.productDAO = ps; }
 	 */
-
+	ApplicationContext context;
+	
 	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
 	public String listProducts(Model model) {
 		model.addAttribute("product", new Product());
@@ -109,5 +116,34 @@ public class ProductController {
 		return "Interface";
 	}
 	
+	
+	/*@RequestMapping(method=RequestMethod.GET,value="/getSelectedCatProduct/{categoryId}")
+	public ModelAndView getSelectedcatProduct(@PathVariable("categoryId")String category){
+		System.out.println("getSelectedCatProduct" +categoryId);
+	}*/
+	
+	@RequestMapping(method=RequestMethod.GET , value="/user/product/{cId}")
+	public ModelAndView userDisplayProduct(@PathVariable("cId") String cId){
+		System.out.println("inside user product display");
+		
+		GuestCartDetails guestCart1 =  (GuestCartDetails) context.getBean("guestCartDetails");
+		System.out.println("product controller guest" +guestCart1.getPrice());
+		
+		ModelAndView model = new ModelAndView();
+		model = new ModelAndView("userWatch");
+		model.addObject("pageCategoryId", cId);
+		model.addObject("productList", productDAO.get(cId));
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println("auth"+auth.getPrincipal().toString());
+		return model;
+	}
+	
+	
+	/*@RequestMapping("user/displayProductDetails/{pId}{cId}")
+	public ModelAndView displayProductDetails(@PathVariable("pId") String pId ,@PathVariable("cId") String cId){
+		ModelAndView model = new ModelAndView();
+		model = new ModelAndView("detailsWatch")
+				
+	}*/
 }
 

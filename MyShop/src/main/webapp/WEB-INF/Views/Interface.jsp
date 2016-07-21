@@ -191,72 +191,60 @@ background-attachment: fixed;
 				</ul>
 			</div>
 
-<ul class="nav navbar-nav">
-      <%-- <c:forEach items="${sessionScope.categotyList}" var="category">
-        <li><a href="user/product/${category.cId}">${category.cName}</a></li>
-      </c:forEach>
-      </ul> --%>
+
 
 <ul class="navbar-nav navbar-right">
-<li><a href="Signup"><span class="glyphicon glyphicon-user "> Sign up </span></a></li><br>
+<sec:authorize access="isAnonymous()"><li><a href="#" data-toggle="modal" data-target="#SignupModal"> Signup</a></li></sec:authorize>
+<!-- <li><a  href="Signup"><span class="glyphicon glyphicon-user "> Sign up </span></a></li><br> -->
 <li><a href="Login"><span class="glyphicon glyphicon-log-in "> Login </span></a></li><br>
+  
 </ul>
 
 
 </div>
 </nav>      
-   <!-- <div class="container-fluid" style="width:40%;"> -->
-   <!-- <div class="col-md-12 col-sm-12 panel">
-  <br>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-    Indicators
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
 
-    Wrapper for slides
-    <div class="carousel-inner" role="listbox" >
-      <div class="item active">
-        <img src="Resources/Images/20.jpg" alt="Mens Watch"  width="900" height="250">
-      </div>
-     <div class="item">
-        <img src="Resources/Images/30.png" alt="Mens Watch" width="900" height="300">
-      </div>
-    
-      <div class="item">
-        <img src="Resources/Images/40.jpg" alt="Women's Watch" width="900" height="300">
-      </div>
+<div id="SignupModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<div class="modal-content">
+	<form method="post" action="Signup">
+		<div class="modal-header">
+		<b>Sing Up</b>
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+		<div class="modal-body">
+		<table class="headerTable">
+		<tr><td>ID:</td><td><input type="number" name="id" placeholder="Enter ID" size="10" required></td></tr>
+			<tr><td>First Name:</td><td><input type="text" name="fname" placeholder="First name" size="30" required></td></tr>
+			<tr><td>Last Name:</td><td><input type="text" name="sname" placeholder="Last name" size="30" required></td></tr>
+			<tr><td>Email:</td><td><input type="email" name="email" placeholder="Email" size="30" required></td></tr>
+			<tr><td>Password:</td><td><input type="password" name="password" placeholder="Password" size="30" required></td></tr>			
+		</table>
+		</div>
+		<div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-primary"> Cancel </button>
+			<button type="submit" class="btn btn-primary">Sign up</button>
+		</div>
+	</form>
+</div>
+</div>
+</div><!-- modal -->
 
-      <div class="item">
-        <img src="Resources/Images/50.jpg" alt="Watch"  width="900" height="300">
-      </div>
-    </div>
- -->
- <!-- <!--    <!-- Left and right controls
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>--> 
+
+
+
+
  <div class="container"> 
 		<div class="row">
 			<div class="col-sm-12">
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div id="myCarouse0" class="carousel slide" data-ride="carouse0">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
-						<li data-target="#myCarousel" data-slide-to="4"></li>
+						<li data-target="#myCarouse0" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarouse0" data-slide-to="1"></li>
+						<li data-target="#myCarouse0" data-slide-to="2"></li>
+						<li data-target="#myCarouse0" data-slide-to="3"></li>
+						<li data-target="#myCarouse0" data-slide-to="4"></li>
 					</ol> 
  
  <div class="carousel-inner" role="listbox">
@@ -286,8 +274,11 @@ background-attachment: fixed;
 								alt="Image">
 							
 						</div>
-
- 
+</div>
+</div>
+</div>
+</div>
+</div> 
  <div class="container">
 		<div class="row">
 			<div class="col-sm-8">
@@ -365,12 +356,97 @@ background-attachment: fixed;
 					</a>
 				</div>
 			</div>
+			
+			
+<div class="col-sm-4">
+				<div id="myCarousel2" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel2" data-slide-to="1"></li>
+						<li data-target="#myCarousel2" data-slide-to="2"></li>
+						<li data-target="#myCarousel2" data-slide-to="3"></li>
+						<li data-target="#myCarousel2" data-slide-to="4"></li>
+					</ol>
+<div class="carousel-inner" role="listbox">
+
+						<div class="item active">
+							<img
+								src="Resources/Images/watch1.jpg"
+								alt="Image">
+							<div class="carousel-caption">
+								<h3>SmartWatch</h3>
+								<p>Buy Now</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<img
+								src="Resources/Images/watch2.jpg"
+								alt="Image">
+							<div class="carousel-caption">
+								<h3>SmartWatch2</h3>
+								<p>Buy Now</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<img
+								src="Resources/Images/watch3.jpg"
+								alt="Image">
+							<div class="carousel-caption">
+								<h3>Watch</h3>
+								<p>Buy Now</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<img
+								src="Resources/Images/watch4.jpg"
+								alt="Image">
+							<div class="carousel-caption">
+								<h3>Watch2</h3>
+								<p>Buy Now</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<img
+								src="Resources/Images/watch5.jpg"
+								alt="Image">
+							<div class="carousel-caption">
+								<h3>Womens watch</h3>
+								<p>Buy Now</p>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel2" role="button"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a> <a class="right carousel-control" href="#myCarousel2"
+						role="button" data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+			
+			
+			
+			
+			
  
  
  
  
- 
- 
+
  
 <div class="carousel-inner">
 					<div class="item active">
@@ -718,6 +794,75 @@ background-attachment: fixed;
 								</div>
 							</div>
 						
+
+
+<div class="container">
+		<div class="row">
+			<div class="row">
+			<div class="col-md-4">
+				<div class="col-md-1">
+				<a href="#"><span class="fa fa-map-marker fa-3x" aria-hidden="true" ></span></a>
+				</div>
+				<div class="col-md-11">
+			    <div>TRACK</div>
+				<div>YOUR ORDER</div>	
+			    </div>
+			</div>
+				
+				
+			<div class="col-md-4">
+				<div class="col-md-2">
+				<a href="#"><span class="fa fa-refresh fa-3x" aria-hidden="true" ></span></a>
+				</div>
+				<div class="col-md-10">
+			    <div>FREE & EASY</div>
+				<div>RETURNS</div>	
+			    </div>
+			</div>
+				
+			<div class="col-md-4">
+				<div class="col-md-2">
+				<a href="#"><span class="fa fa-times-circle-o fa-3x" aria-hidden="true" ></span></a>
+				</div>
+				<div class="col-md-10">
+			    <div>ONLINE</div>
+				<div>CANCELLATION</div>	
+			    </div>
+			</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-12">
+				<h5>PAYMENT METHOD</h5>
+			   </div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				<i class="fa fa-cc-mastercard fa-3x" aria-hidden="true"></i>
+			   
+				<i class="fa fa-cc-amex fa-3x" aria-hidden="true"></i>
+			   
+				<i class="fa fa-cc-paypal fa-3x" aria-hidden="true"></i>
+			   
+				<i class="fa fa-cc-visa fa-3x" aria-hidden="true"></i>
+			  
+				<i class="fa fa-credit-card fa-3x" aria-hidden="true"></i>
+				
+				<i class="fa fa-cc-discover fa-3x" aria-hidden="true"></i>
+				
+				<i class="fa fa-google-wallet fa-3x" aria-hidden="true"></i>
+			   </div>
+			</div>
+
+
+
+
+
+
+
+
+
+
 
 
 

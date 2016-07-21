@@ -1,11 +1,15 @@
 package com.niit.MyShop;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +30,7 @@ import com.niit.MyShop.model.Product;
 import com.niit.MyShop.model.User;
 import com.niit.MyShop.model.UserDetails;
 @Controller
-public class UserController {
+public class UserController implements ApplicationContextAware{
 /*			
 	@Autowired
 	UserDAO userDAO;
@@ -251,16 +255,36 @@ public class UserController {
 		System.out.println("in Login");
 		return "Shops";
 	}	
-	@RequestMapping("/Signup")
-	public String getSignup()
+	@RequestMapping(method=RequestMethod.POST ,value="/Signup")
+	public String getSignup(@RequestParam("fname") String fname,@RequestParam("sname") String sname,@RequestParam("id")String id , @RequestParam("password") String password, 
+			@RequestParam("email") String email)
 	{
-		return "Signup";
-	}
-	
-	@RequestMapping("/logout")
-	public String logout(){
+		System.out.println("in signup controller");
+		System.out.println("id"+id);
+		
+		user.setFname(fname);
+		user.setSname(sname);
+		user.setId(id);
+		user.setPassword(password);
+		/*user.setMob_no("0");*/
+		/*user.setAddress(address);*/
+		user.setAdmin(false);
+		user.setEmail(email);
+		user.setEnabled(true);
+		userDAO.saveOrUpdate(user);
+		
+		System.out.println("user saved");
+		
 		return "Interface";
 	}
+	
+	@RequestMapping(method=RequestMethod.POST , value="/logout")
+	public String logout(){
+		
+		
+		return "Interface";
+	}
+	
 	@RequestMapping("/Success")
 	public ModelAndView success(HttpSession session){
 		System.out.println("inside success");
@@ -274,6 +298,11 @@ public class UserController {
 		}
 		ModelAndView model = new ModelAndView("Success");
 		return model;
+	}
+	@Override
+	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

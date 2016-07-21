@@ -35,7 +35,7 @@ public class CartDetailsDAOImpl implements CartDetailsDAO{
 	 
 	 @Transactional
 	 public void update(String uId,String pId,String cId,String sid,String qty){
-		 String hql = "update CartDetails set qty="+qty+"where pId="+pId+" and sid="+sid+" and uId ='"+uId+"'";
+		 String hql = "update CartDetails set qty='"+qty+"'where pId='"+pId+"' and sid='"+sid+"' and uId ='"+uId+"'";
 		 Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		 query.executeUpdate();
 	 }
@@ -50,15 +50,12 @@ public class CartDetailsDAOImpl implements CartDetailsDAO{
 		sessionFactory.getCurrentSession().save(cart);
 	}
 
-/*	 @Transactional
-	public void delete(CartDetails cart) {
-		sessionFactory.getCurrentSession().delete(cart);
-	}*/
 	
 	 @Transactional
 	public void delete(String uId, String pId, String cId,String sid) {
-		 String hql = "delete from CartDetails where pId="+pId+" and cId="+cId+" and sid="+sid+" and uId='"+uId+"'";
+		 String hql = "delete from CartDetails where pId='"+pId+"' and cId='"+cId+"' and sid='"+sid+"' and uId='"+uId+"'";
 		 Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		 System.out.println("Deleted");
 		 int result = query.executeUpdate();
 	}
 	

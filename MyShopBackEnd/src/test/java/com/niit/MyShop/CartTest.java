@@ -30,7 +30,7 @@ public class CartTest {
 	CartDetailsDAO cart = (CartDetailsDAO) context.getBean("cartDetailsDAO");
 	CartDetails cartDetails = (CartDetails) context.getBean("cartDetails");
 	CartDetails cartDetails2 = (CartDetails) context.getBean("cartDetails");	
-	
+	CartDetails cartDetails3 = (CartDetails) context.getBean("cartDetails");
 		Product p = (Product) context.getBean("product");
 		ProductDAO  pdao = (ProductDAO) context.getBean("productDAO");
 		
@@ -71,8 +71,26 @@ public class CartTest {
 		
 		System.out.println("before save");
 		uDao.saveOrUpdate(u);*/
-		cart.delete("123", "20", "1001", "s123");
+		/*cart.delete("123", "20", "1001", "s123");*/
 		/*cart.update("123", "20", "1000", null,"4");*/
+	/*	
+		cartDetails3.setCartid("3");
+		u = uDao.get("456");
+		cartDetails.setUser_fk(u);
+		p = pdao.get("22");
+		cartDetails3.setProduct_fk(p);
+		cartDetails3.setCategory_fk(p.getCategory_fk());
+		cartDetails3.setSupplier_fk(p.getSupplier_fk());
+		cartDetails3.setPrice(p.getPrice());
+		cartDetails3.setQty("5");
+		cartDetails3.setPrice(9000.0);
+		List<CartDetails> cartList = new ArrayList<CartDetails>();*/
+		
+		/*cartList.add(cartDetails2);*/
+/*		cart.save(cartDetails3);*/
+		
+		/*cart.delete("456", "22", "1000", "2006");*/
+		cart.update("456", "22", "1000", "2006","5");
 		
 	}
 }
