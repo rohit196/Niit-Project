@@ -15,6 +15,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -146,8 +148,10 @@ public class UserController implements ApplicationContextAware{
 	UserDAO userDAO;
    
    @Autowired
-   User user;
+   UserDetails userdetails;
     
+   @Autowired
+   User user;
  /*   @RequestMapping("/isValidUser")
 	public ModelAndView isValidUser(@RequestParam(value = "id") String id,
 			@RequestParam(value = "password") String password) {
@@ -203,9 +207,20 @@ public class UserController implements ApplicationContextAware{
 	public String getHome(){
 		return "Interface";
 	}
-	@RequestMapping("/Login")
-	String showLoginController(){
-		System.out.println("in Login");
+	@RequestMapping(method=RequestMethod.GET, value="/Login")
+	/*public String isValiduser(@RequestParam("username")String email ,@RequestParam("password") String password){*/
+		public String isValiduser(){
+		/*System.out.println("in Login"+email+password);
+		ModelAndView model;
+		
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.scan("com.niit.MyShop");
+		context.refresh();
+		System.out.println("inside isvalidate");
+		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
+	*/	
+		 //UserDAO = userDAO.isValidUser(email, password);
+		 
 		return "Login";
 	}	
 	/*@RequestMapping("/isValidUser")
@@ -244,7 +259,7 @@ public class UserController implements ApplicationContextAware{
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String id = auth.getName();
 			session.setAttribute("loggedAdminid", id);
-			session.setAttribute("loggedAdmin", userDAO.get(id));
+			session.setAttribute("loggedAdmin", userDAO.getUser(id));
 			System.out.println("session loggedAdmin set to ="+id+"logged Admin = "+((User)session.getAttribute("loggedAdmin")).getId());
 		}
 		ModelAndView model = new ModelAndView("AdminHome");
@@ -255,27 +270,40 @@ public class UserController implements ApplicationContextAware{
 		System.out.println("in Login");
 		return "Shops";
 	}	
+	@RequestMapping("/addCategory")
+	String addCategory(){
+			System.out.println("in add category");
+			return "addCategory";
+	}
+	/*@RequestParam("id")int id ,*/
+	/*@ModelAttribute("Signup") String address,BindingResult result ,*/
 	@RequestMapping(method=RequestMethod.POST ,value="/Signup")
-	public String getSignup(@RequestParam("fname") String fname,@RequestParam("sname") String sname,@RequestParam("id")String id , @RequestParam("password") String password, 
-			@RequestParam("email") String email)
+	public String getSignup(@Validated @RequestParam("fname") String fname,@RequestParam("sname") String sname, @RequestParam("password") String password, 
+			@RequestParam("email") String email ,BindingResult result)
 	{
+		if(result.hasErrors()){
+			return "Signup";
+		}else{
+			
+		
 		System.out.println("in signup controller");
-		System.out.println("id"+id);
+/*		System.out.println("id"+id);*/
 		
 		user.setFname(fname);
 		user.setSname(sname);
-		user.setId(id);
+	/*	user.setId(id);*/
 		user.setPassword(password);
 		/*user.setMob_no("0");*/
 		/*user.setAddress(address);*/
 		user.setAdmin(false);
 		user.setEmail(email);
 		user.setEnabled(true);
-		userDAO.saveOrUpdate(user);
+		userDAO.saveorUpdate(user);
 		
 		System.out.println("user saved");
-		
+	
 		return "Interface";
+		}
 	}
 	
 	@RequestMapping(method=RequestMethod.POST , value="/logout")
@@ -293,12 +321,21 @@ public class UserController implements ApplicationContextAware{
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			String id = auth.getName();
 			session.setAttribute("loggedUserid", id);
-			session.setAttribute("loggedUser", userDAO.get(id));
+			session.setAttribute("loggedUser", userDAO.getUser(id));
 			System.out.println("session loggedUserid set to ="+id+"logged user ="+((User)session.getAttribute("loggedUser")).getId());
+			
 		}
 		ModelAndView model = new ModelAndView("Success");
+		model.addObject("productList",productDAO.list());
 		return model;
 	}
+	
+	
+	@RequestMapping("home")
+	public String home(){
+		return "Interface";
+	}
+	
 	@Override
 	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
 		// TODO Auto-generated method stub

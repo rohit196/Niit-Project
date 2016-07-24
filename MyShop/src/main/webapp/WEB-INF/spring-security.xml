@@ -22,7 +22,7 @@
      <form-login login-page="/Login"
      default-target-url="/Interface" login-processing-url="/perform_login"
      authentication-failure-url="/loginError" authentication-success-handler-ref="authenticationSuccessHandler" />
-     <logout logout-success-url="/logout" />
+     <logout  logout-url="/logout" logout-success-url="/Interface"  />
      <csrf disabled="true" />
      
      
@@ -47,8 +47,8 @@
             </user-service>
          -->    
             <jdbc-user-service data-source-ref="dataSource" 
-            				authorities-by-username-query="select id, AUTHORITY from user u, user_roles ur where u.isAdmin=ur.isadmin and id=?"
-            				users-by-username-query="select id, password, 'TRUE' from user where id=?"/>
+            				authorities-by-username-query="select email, AUTHORITY from user u, user_roles ur where u.isAdmin=ur.isadmin and email=?"
+            				users-by-username-query="select email, password, 'TRUE' from user where email=?"/>
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

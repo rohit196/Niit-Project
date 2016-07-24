@@ -7,35 +7,43 @@ import com.niit.MyShop.model.User;
 import com.niit.MyShop.model.Category;
 public class UserTest {
 
-		static AnnotationConfigApplicationContext context;
+	/*	static AnnotationConfigApplicationContext context;
 		
 		public UserTest(){
 			context = new AnnotationConfigApplicationContext();
 			context.scan("com.niit.MyShop");
 			context.refresh();
-		}
+		}*/
 		
-	public static void createUser(User user){
+/*	public static void createUser(User user){
 		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
 		userDAO.saveOrUpdate(user);
-	}
+	}*/
 	public static void main(String[] args)
 	{
-		UserTest t  = new UserTest();
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.scan("com.niit.MyShop");
+		context.refresh();
+		
+		/*UserTest t  = new UserTest();*/
+		UserDAO userDAO = (UserDAO) context.getBean("userDAO");
 		User user = (User) context.getBean("user");
 		
-		user.setId("987");
-		user.setUsername("Admin");
-		user.setPassword("Admin");
-		user.setAdmin(true);
-		user.setAddress("Pune");
-		user.setEmail("rohitgmail");
-		user.setFname("rohit");
-		user.setSname("mehta");
-		user.setMob_no(927283738);
-		t.createUser(user);
+		user.setId(1555);
+		user.setUsername("Abhay");
+		user.setPassword("abhay");
+		user.setAdmin(false);
+		user.setAddress("Delhi");
+		user.setEmail("abhay13gmail");
+		user.setFname("abhay");
+		user.setSname("Khanna");
+		user.setMob_no(927283739);
+		user.setEnabled(true);
 		
-		user.setId("345");
+		/*t.createUser(user);*/
+		userDAO.saveorUpdate(user);
+		
+	/*	user.setId("345");
 		user.setUsername("Admin");
 		user.setPassword("admin");
 		user.setAdmin(true);
@@ -44,7 +52,7 @@ public class UserTest {
 		user.setFname("rohit");
 		user.setSname("mehta");
 		user.setMob_no(927283737);
-		t.createUser(user);
+		t.createUser(user);*/
 	}
 	
 }

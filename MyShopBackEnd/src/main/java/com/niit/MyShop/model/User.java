@@ -1,41 +1,67 @@
 package com.niit.MyShop.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
 
 @Entity
 @Table(name = "user")
 @Component
-public class User {
+public class User implements Serializable{
 		
-		@Id
-		private String id;
+		@Id @GeneratedValue
+		private int id;
+		
 		@Column(name = "username")
+		@Size(min=5,max=10,message="Username should be in 5 - 10 characters" )
 		private String username;
+		@Column
+		@NotNull
+		@Length(min=2 ,max=10 ,message="password should be between 5-10 characters")
 		private String password;
+		
+		@Column
+		@NotNull
 		private String fname;
+		
+		@Column
+		@NotNull
 		private String sname;
+		
+		@Column
+		@NotNull
+		@Pattern(regexp=".+@.+\\+", message="wrong email")
 		private String email;
+		
+		@Length(min=10 ,max=30,message="address should be between 10-30 charcters")
 		private String address;
+		@Pattern(regexp="(^$|[0-9]{10}")
 		private int mob_no;
+		
 		private boolean isAdmin;
 		private boolean enabled;
 		
 		
 
 		@OneToMany(fetch=FetchType.EAGER)
-		public String getId() {
+		public int getId() {
 			return id;
 		}
 	
-		public void setId(String id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 		public String getFname() {

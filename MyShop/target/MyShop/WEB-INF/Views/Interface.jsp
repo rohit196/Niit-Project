@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -152,50 +153,64 @@ background-attachment: fixed;
 [data-slide="prev"] {
 	margin-right: 10px;
 }
+footer {
+    position: bottom;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+}
+
    
  </style>
   </head>
-<body id="wrap" style="background-color:lightgrey;">
+<body id="wrap" bgcolor="#000000">
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
 <div class="navbar-header">
 <a class="navbar-brand" href="#"></a>
 </div>                                          
- <%-- <table width="100%">
- <tr>
- <c:if test="${!empty user && user.admin==0}">
- <td align="right"><a href="myCart">My Cart</a>(${cartSize})</td>
- </c:if>
- </tr>
- </table> --%> 
-
+ 
 <ul class="nav navbar-nav">
 <li class="active"><a href="#" > Home </a></li>
-<li><a href="productDisplay.jsp"> Products </a></li>
-<li><a href="Shops.jsp"> Shops </a></li>
+
+<li><a href="#"> Category</a></li>
+<
+<li><a href="Shops"> Shops </a></li>
 <li><a href="#"> Contact Us </a></li>
 <li><a href="aboutus.html"> About Us</a></li>
 </ul>
+
 
 <div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a><input style="font-color: black;" type="text"
+					<!-- <li><a><input style="font-color: black;" type="text"
 							placeholder="Search"></a></li>
 					<li><a href="#"><span class="glyphicon glyphicon-search"></span>
-							Search</a></li>
+							Search</a></li> -->
 					<li><a href="#"><span
 							class="glyphicon glyphicon-shopping-cart"></span> CART</a></li>
 				</ul>
 			</div>
 
+<!-- ------------------------------------------------------------------------------------------------------------------- -->
+<!-- <div class="content">
+<fieldset>
+<legend>Nav Menu</legend>
+
+</fieldset>
+</div> -->
+
+
+
 
 
 <ul class="navbar-nav navbar-right">
-<sec:authorize access="isAnonymous()"><li><a href="#" data-toggle="modal" data-target="#SignupModal"> Signup</a></li></sec:authorize>
+<!-- <sec:authorize access="isAnonymous()"><li><a href="#" data-toggle="modal" data-target="#SignupModal"> Signup</a></li></sec:authorize> -->
 <!-- <li><a  href="Signup"><span class="glyphicon glyphicon-user "> Sign up </span></a></li><br> -->
+<a href="memberShip.obj" style="margin:50;" >Sign Up</a><br><br>
 <li><a href="Login"><span class="glyphicon glyphicon-log-in "> Login </span></a></li><br>
   
 </ul>
@@ -204,32 +219,33 @@ background-attachment: fixed;
 </div>
 </nav>      
 
-<div id="SignupModal" class="modal fade" role="dialog">
+<%-- <div id="SignupModal" class="modal fade" role="dialog">
 <div class="modal-dialog">
 <div class="modal-content">
-	<form method="post" action="Signup">
+	<form:form method="post" action="Signup">
 		<div class="modal-header">
-		<b>Sing Up</b>
+		<b>Sign Up</b>
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 		</div>
+		<!-- placeholder="First name" --><!-- required -->
 		<div class="modal-body">
 		<table class="headerTable">
-		<tr><td>ID:</td><td><input type="number" name="id" placeholder="Enter ID" size="10" required></td></tr>
-			<tr><td>First Name:</td><td><input type="text" name="fname" placeholder="First name" size="30" required></td></tr>
-			<tr><td>Last Name:</td><td><input type="text" name="sname" placeholder="Last name" size="30" required></td></tr>
-			<tr><td>Email:</td><td><input type="email" name="email" placeholder="Email" size="30" required></td></tr>
-			<tr><td>Password:</td><td><input type="password" name="password" placeholder="Password" size="30" required></td></tr>			
+		<!-- <tr><td>ID:</td><td><input type="number" name="id" placeholder="Enter ID" size="10" required></td></tr> -->
+			<tr><td>First Name:</td><td><input type="text" name="fname"  size="30" ><form:errors path="fname" /></td></tr>
+			<tr><td>Last Name:</td><td><input type="text" name="sname" placeholder="Last name" size="30" ><form:errors path="sname" /></td></tr>
+			<tr><td>Email:</td><td><input type="email" name="email" placeholder="Email" size="30" ><form:errors path="email" /></td></tr>
+			<tr><td>Password:</td><td><input type="password" name="password" placeholder="Password" size="30" ><form:errors path="password" /> </td></tr>			
 		</table>
 		</div>
 		<div class="modal-footer">
 			<button type="button" data-dismiss="modal" class="btn btn-primary"> Cancel </button>
 			<button type="submit" class="btn btn-primary">Sign up</button>
 		</div>
-	</form>
+	</form:form>
 </div>
 </div>
 </div><!-- modal -->
-
+ --%>
 
 
 
@@ -793,79 +809,57 @@ background-attachment: fixed;
 									</div>
 								</div>
 							</div>
+</div>
+</div></div>						
+
+
+<footer>
+
+<nav class="navbar navbar-inverse navbar-bottom">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li><a href="#">WatchShop.com</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Delivery and Payment</a></li>
+						<li><a href="#">FAQs</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Return Policy</a></li>
 						
 
+					</ul>
 
-<div class="container">
-		<div class="row">
-			<div class="row">
-			<div class="col-md-4">
-				<div class="col-md-1">
-				<a href="#"><span class="fa fa-map-marker fa-3x" aria-hidden="true" ></span></a>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a>Follow Us:</a></li>
+						<li><a title="Join us on Facebook" href="#"><span
+								class="fa fa-facebook-square" style="font-size: 24px;"></span></a></li>
+						<li><a title="Join us on Twitter" href="#"><span
+								class="fa fa-twitter-square" style="font-size: 24px;"></span></a></li>
+						<li><a title="Join Google+ to follow Xperience" href="#"><span
+								class="fa fa-google-plus-square" style="font-size: 24px;"></span></a></li>
+						<li><a title="Visit our YouTube channel" href="#"><span
+								class="fa fa-youtube-square" style="font-size: 24px;"></span></a></li>
+					</ul>
+
 				</div>
-				<div class="col-md-11">
-			    <div>TRACK</div>
-				<div>YOUR ORDER</div>	
-			    </div>
+					<p style="text-align:center;">Copyright © 2016 Watchshop.com</p> 
 			</div>
-				
-				
-			<div class="col-md-4">
-				<div class="col-md-2">
-				<a href="#"><span class="fa fa-refresh fa-3x" aria-hidden="true" ></span></a>
-				</div>
-				<div class="col-md-10">
-			    <div>FREE & EASY</div>
-				<div>RETURNS</div>	
-			    </div>
-			</div>
-				
-			<div class="col-md-4">
-				<div class="col-md-2">
-				<a href="#"><span class="fa fa-times-circle-o fa-3x" aria-hidden="true" ></span></a>
-				</div>
-				<div class="col-md-10">
-			    <div>ONLINE</div>
-				<div>CANCELLATION</div>	
-			    </div>
-			</div>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-md-12">
-				<h5>PAYMENT METHOD</h5>
-			   </div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-				<i class="fa fa-cc-mastercard fa-3x" aria-hidden="true"></i>
-			   
-				<i class="fa fa-cc-amex fa-3x" aria-hidden="true"></i>
-			   
-				<i class="fa fa-cc-paypal fa-3x" aria-hidden="true"></i>
-			   
-				<i class="fa fa-cc-visa fa-3x" aria-hidden="true"></i>
-			  
-				<i class="fa fa-credit-card fa-3x" aria-hidden="true"></i>
-				
-				<i class="fa fa-cc-discover fa-3x" aria-hidden="true"></i>
-				
-				<i class="fa fa-google-wallet fa-3x" aria-hidden="true"></i>
-			   </div>
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+		</nav>
+	
+	
+	
+	</footer>
 
 
 
@@ -879,13 +873,7 @@ background-attachment: fixed;
 	</ul></li>
 	</c:forEach>
 
-<%-- 
-<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-<div>
-	Login attempt unseccesSfull<br>
-	${sessionScope['SPRING_SECURITY_LAST_EXCEPTION'].message}
-</div>
-</c:if> --%>
+
 
 
 </body>

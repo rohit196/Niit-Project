@@ -55,6 +55,7 @@ public class ApplicationContextConfig {
     	properties.put("hibernate.show_sql", "true");
     	properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
     	properties.put("hibernate.hbm2ddl.auto", "update");
+    	/*properties.put("format_sql", "true");*/
     	//properties.put("hibernate.temp.use_jdbc_metadata_defaults" value = "false" );
     	return properties;
     }

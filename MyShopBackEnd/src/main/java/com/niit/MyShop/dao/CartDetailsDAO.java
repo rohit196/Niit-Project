@@ -7,15 +7,15 @@ import com.niit.MyShop.model.CartDetails;
 
 public interface CartDetailsDAO {
 	
-public List<CartDetails> getCart(String uId);
+	public List<CartDetails> getCart(int uId);
 	
 	/*public void saveOrUpdate(CartDetails cart);*/
 	
 	public void save(CartDetails cart);
 	
-	public void update(String uId,String pId,String cId,String sid,String qty);
+	public void update(int uId,String id,String cat_id,String sid,String qty);
 	
 	/*public void delete(CartDetails cart);*/
 
-	public void delete(String uId, String pId, String cId, String sid);
+	public void delete(int uId, String id, String cat_id, String sid);
 }

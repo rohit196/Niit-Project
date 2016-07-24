@@ -1,6 +1,7 @@
-com\niit\MyShop\CartController.class
-com\niit\MyShop\SupplierController.class
 com\niit\MyShop\UrlAuthenticationSuccessHandler.class
 com\niit\MyShop\ProductController.class
 com\niit\MyShop\CategoryController.class
+com\niit\MyShop\demohandler.class
+com\niit\MyShop\CartController.class
+com\niit\MyShop\SupplierController.class
 com\niit\MyShop\UserController.class

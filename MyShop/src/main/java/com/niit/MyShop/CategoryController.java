@@ -84,14 +84,17 @@ public class CategoryController {
  		model.addAttribute("categoryList" , this.categoryDAO.list());	
  		System.out.println(category.getCat_id() + category.getType());
  		categoryDAO.saveOrUpdate(category);
- 		return "Category";
+ 		return "redirect:/getAllCategories";
  	}
+	/**/
 	@RequestMapping(value="category/remove/{cat_id}" , method =RequestMethod.GET)
- 	public ModelAndView deleteCategory(@PathVariable("cat_id") String id){
+ 	public ModelAndView deleteCategory(@PathVariable("cat_id") String id ,Model model){
+		model.addAttribute("category", new Category());
+		model.addAttribute("categoryList", this.categoryDAO.list());
 		categoryDAO.delete(id);
  		return new ModelAndView ("Category");
- 	}
- 	public String removeCategory(String id, ModelMap model , Category category ) throws Exception{
+ 	
+ 	/*public String removeCategory(String id, ModelMap model , Category category ) throws Exception{
  		try{
  			categoryDAO.delete(id);
  			model.addAttribute("message","Successfully Delete");
@@ -101,12 +104,12 @@ public class CategoryController {
  		}catch(Exception e){
  			model.addAttribute("message",e.getMessage());
  			e.printStackTrace();
- 		}
+ 		}*/
  		/*model.addAttribute("category" , new Category());
  		model.addAttribute("category", this.categoryDAO.get(id));
  		model.addAttribute("categoryList" , this.categoryDAO.list());
  		*/
- 		return "redirect:/Category";
+ 		/*return "Category";*/
  	}
  	@RequestMapping(value = "category/edit/{cat_id}")
  	

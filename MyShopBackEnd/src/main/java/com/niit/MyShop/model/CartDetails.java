@@ -13,28 +13,28 @@ import org.springframework.stereotype.Component;
 @Table(name="CartDetails")
 @Component
 public class CartDetails {
-	@Id 
-	private String cartid;
+	@Id @GeneratedValue
+	private int cartid;
 	
 	@ManyToOne @JoinColumn(name="uId")
 	private User user_fk;
 	
-	@ManyToOne @JoinColumn(name="pId")
+	@ManyToOne @JoinColumn(name="id")
 	private Product product_fk;
 	
-	@ManyToOne @JoinColumn(name="cId")
+	@ManyToOne @JoinColumn(name="cat_id")
 	private Category category_fk;
 	
-	@ManyToOne @JoinColumn(name="sId")
+	@ManyToOne @JoinColumn(name="sid")
 	private Supplier supplier_fk;
 	
 	private String qty;
 	private double price;
 	
-	public String getCartid() {
+	public int getCartid() {
 		return cartid;
 	}
-	public void setCartid(String cartid) {
+	public void setCartid(int cartid) {
 		this.cartid = cartid;
 	}
 	public User getUser_fk() {

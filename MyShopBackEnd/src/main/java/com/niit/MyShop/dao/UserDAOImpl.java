@@ -38,8 +38,8 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Transactional
-	public void saveOrUpdate(User user) {
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
+	public void saveorUpdate(User user) {
+		sessionFactory.getCurrentSession().save(user);
 	}
 	
 	@Transactional
@@ -49,15 +49,28 @@ public class UserDAOImpl implements UserDAO{
 	
 
 	@Transactional
-	public void delete(String id) {
+	public void delete(int id) {
 		User user = new User();
 		user.setId(id);
 		sessionFactory.getCurrentSession().delete(user);
 	}
+	
+	@Transactional
+	public User get(int id)
+	{
+		String hql = "from User where id =" +id;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<User> list = (List<User>) query.list();
+		
+		if(list != null && !list.isEmpty()){
+			return list.get(0);
+		}
+		return null;
+	}
 
 	@Transactional
-	public User get(String id) {
-		String hql = "from User where id=" + id;
+	public User getUser(String email) {
+		String hql = "from User where email='" + email+"'";
 		@SuppressWarnings("deprecation")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
@@ -74,10 +87,10 @@ public class UserDAOImpl implements UserDAO{
 	public void saveOrUpdate(Signup_Details signup_Details){
 		sessionFactory.getCurrentSession().saveOrUpdate(signup_Details);
 	}*/
-	
+	/*boolean isAdmin*/
 	@Transactional
-	public boolean isValidUser(String id, String password, boolean isAdmin) {
-		String hql = "from User where id= '" + id + "' and " + " password ='" + password+"'";
+	public void isValidUser(String email, String password ) {
+		String hql = "from User where email= '" + email + "' and " + " password ='" + password+"'";
 		
 		//String hql = "from User where id="'" + id + "'" and "+" password = "'" + password +"'" ; 
 		@SuppressWarnings("deprecation")
@@ -88,14 +101,11 @@ public class UserDAOImpl implements UserDAO{
 		List<User> list = (List<User>) query.list();
 		
 		if (list != null && !list.isEmpty()) {
-			return true;
 		}
-		
-		return false;
 	}
 
 		@Transactional
-		public void enable(String id,boolean enable)
+		public void enable(int id,boolean enable)
 		{
 			Query query = sessionFactory.getCurrentSession().createQuery("update User set enabled='"+enable+"'where id="+id);
 			query.executeUpdate();
@@ -107,5 +117,7 @@ public class UserDAOImpl implements UserDAO{
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

@@ -37,23 +37,31 @@ public class CartTest {
 		UserDAO uDao = (UserDAO) context.getBean("userDAO");
 		User u  = (User) context.getBean("user");
 		
-/*		CartDetails cartDetails = new CartDetails();
-		cartDetails.setCartid("1");
-		u = uDao.get("123");
+		/*CartDetails cartDetails = new CartDetails();*/
+		/*cartDetails.setCartid();*/
+		u = uDao.get(70);
 		cartDetails.setUser_fk(u);
 		p = pdao.get("20");
+		System.out.println("valid"+p.getId());
 		cartDetails.setProduct_fk(p);
 		cartDetails.setCategory_fk(p.getCategory_fk());
 		cartDetails.setSupplier_fk(p.getSupplier_fk());
 		cartDetails.setPrice(p.getPrice());
-		cartDetails.setQty("1");
-		cartDetails.setPrice(5000.0);
+		cartDetails.setQty("7");
+		cartDetails.setPrice(7000.0);
 		List<CartDetails> cartList = new ArrayList<CartDetails>();
 		cartList.add(cartDetails);
 		
 		cart.save(cartDetails);
 		
-		cartDetails2.setCartid("2");
+		
+
+		System.out.println("before save");
+		uDao.saveorUpdate(u);
+		
+		/*cart.delete("123", "20", "1001", "s123");*/
+		
+		/*cartDetails2.setCartid("2");
 		u = uDao.get("456");
 		cartDetails.setUser_fk(u);
 		p = pdao.get("22");
@@ -63,7 +71,7 @@ public class CartTest {
 		cartDetails2.setPrice(p.getPrice());
 		cartDetails2.setQty("5");
 		cartDetails2.setPrice(9000.0);
-		List<CartDetails> cartList = new ArrayList<CartDetails>();
+		List<CartDetails> cartList2 = new ArrayList<CartDetails>();
 		
 		cartList.add(cartDetails2);
 		
@@ -71,10 +79,12 @@ public class CartTest {
 		
 		System.out.println("before save");
 		uDao.saveOrUpdate(u);*/
+		
 		/*cart.delete("123", "20", "1001", "s123");*/
-		/*cart.update("123", "20", "1000", null,"4");*/
-	/*	
-		cartDetails3.setCartid("3");
+		
+		/*cart.update("123", "20", "1001", "s123", "4");*/
+		
+		/*cartDetails3.setCartid("3");
 		u = uDao.get("456");
 		cartDetails.setUser_fk(u);
 		p = pdao.get("22");
@@ -90,7 +100,7 @@ public class CartTest {
 /*		cart.save(cartDetails3);*/
 		
 		/*cart.delete("456", "22", "1000", "2006");*/
-		cart.update("456", "22", "1000", "2006","5");
+		/*cart.update("456", "22", "1000", "2006","5");*/
 		
 	}
 }

@@ -94,7 +94,7 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		
-		// redirectAttrs.addFlashAttribute(arg0, arg1)
+	
 		return "redirect:/getAllProducts";
 	}
 
@@ -122,8 +122,8 @@ public class ProductController {
 		System.out.println("getSelectedCatProduct" +categoryId);
 	}*/
 	
-	@RequestMapping(method=RequestMethod.GET , value="/user/product/{cId}")
-	public ModelAndView userDisplayProduct(@PathVariable("cId") String cId){
+	@RequestMapping(method=RequestMethod.GET , value="/user/product/{cat_id}")
+	public ModelAndView userDisplayProduct(@PathVariable("cat_id") String cat_id){
 		System.out.println("inside user product display");
 		
 		GuestCartDetails guestCart1 =  (GuestCartDetails) context.getBean("guestCartDetails");
@@ -131,19 +131,13 @@ public class ProductController {
 		
 		ModelAndView model = new ModelAndView();
 		model = new ModelAndView("userWatch");
-		model.addObject("pageCategoryId", cId);
-		model.addObject("productList", productDAO.get(cId));
+		model.addObject("pageCategoryId", cat_id);
+		model.addObject("productList", productDAO.get(cat_id));
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("auth"+auth.getPrincipal().toString());
 		return model;
 	}
 	
 	
-	/*@RequestMapping("user/displayProductDetails/{pId}{cId}")
-	public ModelAndView displayProductDetails(@PathVariable("pId") String pId ,@PathVariable("cId") String cId){
-		ModelAndView model = new ModelAndView();
-		model = new ModelAndView("detailsWatch")
-				
-	}*/
 }
 

@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Categories</title>
-
+<%@include file="Header.jsp" %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -62,12 +62,12 @@
 <h3> ADD CATEGORY</h3>
 <c:url var="addAction" value="/category/add"></c:url>
 
-<form:form action="${addAction}" commandName= "category">
+<form:form action="${addAction}" commandName= "category" modelAttribute="category" >
 <table>
 <tr>
 <td>
 <form:label path="cat_id">
-<spring:message text="cat_id" />
+<spring:message text="ID" />
 </form:label></td>
 <c:choose>
 <c:when test="${!empty category.cat_id}">
@@ -128,5 +128,6 @@
 </c:forEach>
 </c:if>
 </table>
+<%@include file="footer.jsp" %>
 </body>
 </html>

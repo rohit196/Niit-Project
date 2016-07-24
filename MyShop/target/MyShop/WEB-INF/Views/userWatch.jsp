@@ -66,36 +66,36 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-info">
-<%-- <div class="panel-body"><a href="user/displayProductDetaits/${productList[count.index].cId}/${productList[count.index].category_fk.cId}"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></a> --%>
+
 </div>
-        <div class="panel-footer"><a href="user/addToCart/${productList[count.index].pId}/${productList[count.index].category_fk.cId}" class="btn btn-sm btn-hover btn-info cartButton">Add to Cart</a></div>
+        <div class="panel-footer"><a href="user/addToCart/${productList[count.index].id}/${productList[count.index].category_fk.cat_id}" class="btn btn-sm btn-hover btn-info cartButton">Add to Cart</a></div>
+        
       </div>
     </div>
     <c:if test="${count.index+1 <=  (size-1)}">
     <div class="col-sm-4">
       <div class="panel panel-danger">
-      <%-- <div class="panel-body"><a href="user/displayProductDetaits/${productList[count.index+1].pId}/${productList[count.index+1].category_fk.cId}"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></a></div> --%>
-        <div class="panel-footer"><a href="user/addToCart/${productList[count.index+1].pId}/${productList[count.index+1].category_fk.cId}" class="btn btn-sm btn-hover btn-info cartButton">Add to Cart</a></div>
+ 
+        <div class="panel-footer"><a href="user/addToCart/${productList[count.index+1].id}/${productList[count.index+1].category_fk.cat_id}" class="btn btn-sm btn-hover btn-info cartButton"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></a></div>Add to Cart</a></div>
       </div>
       </div>
     </c:if>
     <c:if test="${count.index+2 <=  (size-1)}">
     <div class="col-sm-4">
       <div class="panel panel-success">
-      <%-- <div class="panel-body"><a href="user/displayProductDetaits/${productList[count.index+2].pId}/${productList[count.index+2].category_fk.cId}"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></a></div> --%>
-        <div class="panel-footer"><a href="user/addToCart/${productList[count.index+2].pId}/${productList[count.index+2].category_fk.cId}" class="btn btn-sm btn-hover btn-info cartButton">Add to Cart</a></div>
+      
+        <div class="panel-footer"><a href="user/addToCart/${productList[count.index+2].id}/${productList[count.index+2].category_fk.cat_id}" class="btn btn-sm btn-hover btn-info cartButton">Add to Cart</a></div>
       </div>
     </div>
     </c:if>
   </div>
 </c:forEach>
 </div><br>
-
 <br><br>
 
 <footer class="container-fluid text-center">
   <p>Online Store Copyright</p>
 </footer>
-</div>
+
 </body>
 </html>

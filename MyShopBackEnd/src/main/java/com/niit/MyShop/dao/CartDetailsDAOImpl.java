@@ -23,8 +23,8 @@ public class CartDetailsDAOImpl implements CartDetailsDAO{
 		this.sessionFactory = sessionFactory;
 	}
 
-	 @Transactional
-	public List<CartDetails> getCart(String uId) {
+	@Override @Transactional
+	public List<CartDetails> getCart(int uId) {
 		String hql = "from CartDetails where uId="+uId;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<CartDetails> cartList = query.list();
@@ -34,8 +34,8 @@ public class CartDetailsDAOImpl implements CartDetailsDAO{
 	}
 	 
 	 @Transactional
-	 public void update(String uId,String pId,String cId,String sid,String qty){
-		 String hql = "update CartDetails set qty='"+qty+"'where pId='"+pId+"' and sid='"+sid+"' and uId ='"+uId+"'";
+	 public void update(int uId,String id,String cat_id,String sid,String qty){
+		 String hql = "update CartDetails set qty='"+qty+"'where id='"+id+"' and sid='"+sid+"' and uId ='"+uId+"'";
 		 Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		 query.executeUpdate();
 	 }
@@ -52,11 +52,10 @@ public class CartDetailsDAOImpl implements CartDetailsDAO{
 
 	
 	 @Transactional
-	public void delete(String uId, String pId, String cId,String sid) {
-		 String hql = "delete from CartDetails where pId='"+pId+"' and cId='"+cId+"' and sid='"+sid+"' and uId='"+uId+"'";
+	public void delete(int uId, String id, String cat_id,String sid) {
+		 String hql = "delete from CartDetails where id='"+id+"' and cat_id='"+cat_id+"' and sid='"+sid+"' and uId='"+uId+"'";
 		 Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		 System.out.println("Deleted");
 		 int result = query.executeUpdate();
 	}
-	
 }

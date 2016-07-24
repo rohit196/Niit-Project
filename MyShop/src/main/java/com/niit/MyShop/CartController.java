@@ -63,32 +63,34 @@ public class CartController implements ApplicationContextAware{
 	
 	
 	
-	@RequestMapping(method=RequestMethod.GET,value="/user/addToCart/{pId}/{cId}")
-	public String addtoCartUser(HttpSession session, @PathVariable("pId") String  pId, @PathVariable("cat_id") String cId){
+	@RequestMapping(method=RequestMethod.GET,value="/user/addToCart/{id}/{cat_id}")
+	public String addtoCartUser(HttpSession session, @PathVariable("id") String  id, @PathVariable("cat_id") String cat_id){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		System.out.println("auth: "+auth);
 		
-		GuestCartDetails guestCart = (GuestCartDetails) context.getBean("guestCartDetails");
-		guestCart.setPrice("1111");
+	/*	GuestCartDetails guestCart = (GuestCartDetails) context.getBean("guestCartDetails");*/
+		/*guestCart.setPrice("1111");
 		if (session.getAttribute("loggedUserName") == null || session.getAttribute("loggedUserName") == "") {
 			guestCart = (GuestCartDetails) context.getBean("guestCartDetails");
-			Product p = productDAO.get("pId");
+			Product p = productDAO.get("id");
 			guestCart.setpId("id");
 			guestCart.setcId(p.getCategory_fk().getCat_id());
 			guestCart.setsId(p.getSupplier_fk().getSid());
-			/*guestCart.setPrice(p.getPrice());*/
+			guestCart.setPrice(p.getPrice());
 			guestCart.setQty("1");
 		}else{
+*/			
 			user = (User) session.getAttribute("loggedUser");
 			cartDetails.setUser_fk(user);
 			
-			product = productDAO.get("pId");
+			product = productDAO.get(id);
+			System.out.println("print product"+id);
 			cartDetails.setProduct_fk(product);
-			cartDetails.setCategory_fk(product.getCategory_fk());
+			cartDetails.setCategory_fk(product.getCategory_fk());;
 			cartDetails.setSupplier_fk(product.getSupplier_fk());
 			cartDetails.setPrice(product.getPrice());
 			cartDetails.setQty("1");
-			
+		/*	getCart(user.getId())*/
 			List<CartDetails> cart = cartDetailsDAO.getCart(user.getId());
 			if(cart == null){
 				cart = new ArrayList<CartDetails>();
@@ -97,7 +99,6 @@ public class CartController implements ApplicationContextAware{
 			cartDetailsDAO.save(cartDetails);
 			//userDao.saveOrUpdate(user);
 			System.out.println("saved into cart!");
-		}
 		
 	/*	switch (pId) {
 		case "1":
@@ -108,10 +109,10 @@ public class CartController implements ApplicationContextAware{
 			
 		default:
 			return "redirect: user/product/1";*/
-		return "redirect: /MyShop/user/product/";
+		return "redirect: /MyShop/displayCart";
 		}
 		
-		@RequestMapping(method=RequestMethod.GET , value="/addToCart/{pId}")
+		@RequestMapping(method=RequestMethod.GET , value="/addToCart/{id}")
 		public void addToCart(@PathVariable("id") String id){
 			GuestCartDetails guestCart = (GuestCartDetails) context.getBean("guestCartDetails");
 			System.out.println("GuestDetails Price"+guestCart.getPrice());
@@ -128,32 +129,31 @@ public class CartController implements ApplicationContextAware{
 			ModelAndView model = new ModelAndView("displayCart");
 			user = (User) session.getAttribute("loggedUser");
 			List<CartDetails> cartList = cartDetailsDAO.getCart(user.getId());
-			
-			Iterator<CartDetails> i = cartList.iterator();
+			System.out.println(user.getId());
+			/*java.util.Iterator<CartDetails> i = cartList.iterator();
 			while(i.hasNext()){
 				CartDetails cd = i.next();
-				System.out.println("supplier"+cd.getSupplier_fk().getSid() );
-			}
+				System.out.println("supplier"+cd.getSupplier_fk().getSid());*/
 			model.addObject("cartList",cartList);
 			return model;
 		}
 
 		
-		@RequestMapping("deleteFromCart/{pId}/{cId}/{sid}")
-		public String deleteFromCart(HttpSession session, @PathVariable("pId") String pId, @PathVariable("cId") String cId
+		@RequestMapping("deleteFromCart/{id}/{cat_id}/{sid}")
+		public String deleteFromCart(HttpSession session, @PathVariable("id") String id, @PathVariable("cat_id") String cat_id
 				,@PathVariable("sid") String sid){
 			user = (User) session.getAttribute("loggedUser");
-			cartDetailsDAO.delete(user.getId(), pId, cId, sid);
+			cartDetailsDAO.delete(user.getId(), id, cat_id, sid);
 			return "redirect: /MyShop/displayCart";
 		}
-		
+		/*(user.getId(), id, cat_id, sid);*/
 		@RequestMapping("updateCartItemQty")
-		public String updateCartItem(HttpSession session,@RequestParam("updateProductId") String pId,@RequestParam
+		public String updateCartItem(HttpSession session,@RequestParam("updateProductId") String id,@RequestParam
 				("updateSupplierId")String sid ,@RequestParam("qty") String qty){
 			user = (User) session.getAttribute("loggedUser");
-			Product p = productDAO.get(pId);
-			cartDetailsDAO.update(user.getId(),pId,p.getCategory_fk().getCat_id(),sid,qty);
-			return "redirect: /MyShop/displayCart";
+			Product p = productDAO.get(id);
+			cartDetailsDAO.update(user.getId(),id,p.getCategory_fk().getCat_id(),sid,qty);
+			return "redirect: displayCart";
 		}
 
 		@Override

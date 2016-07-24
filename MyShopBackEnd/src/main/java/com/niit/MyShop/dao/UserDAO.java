@@ -10,15 +10,17 @@ import com.niit.MyShop.model.UserDetails;
 public interface UserDAO {
 	public List<User> list();
 
-	public User get(String id);
-
-	public void saveOrUpdate(User user);
+	public User get(int id);
+	
+	public User getUser(String email);
+	/*public void saveOrUpdate(User user);*/
+	public void saveorUpdate(User user);
 	public void saveOrUpdate(UserDetails userDetails);
 	/*public void saveOrUpdate(Signup_Details signup_Details);*/
-	public void delete(String id);
-	public void enable(String id ,boolean enabled);
+	public void delete(int id);
+	public void enable(int id ,boolean enabled);
 	
-	public boolean isValidUser(String id, String password, boolean isAdmin);
+	public void isValidUser(String email, String password);
 
 }
 

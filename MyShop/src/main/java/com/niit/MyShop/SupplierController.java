@@ -59,7 +59,7 @@ public class SupplierController {
 	 		model.addAttribute("supplier" , new Supplier());
 	 		model.addAttribute("supplierList", this.supplierDAO.list());
 	 		supplierDAO.saveOrUpdate(supplier);
-	 		return "Supplier";
+	 		return "redirect:/getAllSuppliers";
 	 	}
 	 	
 	 	@RequestMapping("supplier/remove/{sid}")
@@ -67,18 +67,25 @@ public class SupplierController {
 	 		supplierDAO.delete(supplier);
 	 		return new ModelAndView ("Supplier");
 	 	}*/
-	 	public String removeSupplier(@PathVariable("sid")String id,ModelMap model ,Supplier supplier) throws Exception{
-	 		try{
+	 	public ModelAndView removeSupplier(@PathVariable("sid")String id,Model model) {
+	 	/*	throws Exception try{
 	 			supplierDAO.delete(id);
 	 			model.addAttribute("message","Successfully Delete");
 	 		}catch(Exception e){
 	 			model.addAttribute("message",e.getMessage());
 	 			e.printStackTrace();
-	 		}
-	 		model.addAttribute("supplier" ,new Supplier());
-	 		model.addAttribute("supplier", this.supplierDAO.get(id));
-	 		model.addAttribute("supplierList", this.supplierDAO.list());
-	 		return "Supplier";
+	 		}*/
+	 		System.out.println("In remove controller.....");
+	 		ModelAndView mo = new ModelAndView("Supplier");
+	 		mo.addObject("supplier", new Supplier());
+	 		mo.addObject("supplierList", this.supplierDAO.list());
+	 	//	mo.addObject("supplierList", this.supplierDAO.get(id));
+	 		/*model.addAttribute("supplier" ,new Supplier());*/
+	 		/*model.addAttribute("supplier", this.supplierDAO.get(id));*/
+	 		/*model.addAttribute("supplierList", this.supplierDAO.list());*/
+	 		supplierDAO.delete(id);
+	 		
+	 		return mo;
 	 	}
 	 	
 	 	
